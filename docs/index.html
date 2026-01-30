@@ -489,7 +489,6 @@
       </nav>
 
       <div class="cta">
-        <a class="btn" href="#how">How it works</a>
         <a class="btn primary" href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/" target="_blank" rel="noopener">
           Launch App →
         </a>
@@ -709,7 +708,7 @@
   </main>
 
   <script>
-    // minimal JS only: year + reveal
+    // minimal JS only: year + reveal + in-page scrolling
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const items = document.querySelectorAll(".reveal");
@@ -722,6 +721,23 @@
     }, { root, threshold: 0.18 });
 
     items.forEach(el => obs.observe(el));
+
+    // Ensure hash links scroll inside the main container
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const id = link.getAttribute("href").slice(1);
+        const target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth" });
+        history.replaceState(null, "", `#${id}`);
+      });
+    });
+
+    if (location.hash) {
+      const target = document.getElementById(location.hash.slice(1));
+      if (target) target.scrollIntoView();
+    }
   </script>
 </body>
 </html>
