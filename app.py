@@ -426,24 +426,26 @@ def right_mark():
         <div class="cn-subtitle" style="margin-top:6px;">
           Clean. Fast. Private. Built for trust.
         </div>
-
-        <div class="cn-mini">
-          <div class="cn-mini-card">
-            <div class="cn-mini-title">Profile photos</div>
-            <div class="cn-mini-sub">Add 3–6 images.</div>
-          </div>
-          <div class="cn-mini-card">
-            <div class="cn-mini-title">Personality type</div>
-            <div class="cn-mini-sub">Helps teams communicate.</div>
-          </div>
-          <div class="cn-mini-card">
-            <div class="cn-mini-title">Verification</div>
-            <div class="cn-mini-sub">Selfie upload (review).</div>
-          </div>
-        </div>
       </div>
     </div>
     """, unsafe_allow_html=True)
+
+    st.subheader("What you’ll add")
+    st.caption("These steps help agencies understand you better.")
+
+    c1, c2, c3 = st.columns(3)
+
+    with c1:
+        st.markdown("### 📸 Profile photos")
+        st.caption("Add 3–6 images")
+
+    with c2:
+        st.markdown("### 🧠 Personality type")
+        st.caption("Helps teams communicate")
+
+    with c3:
+        st.markdown("### ✅ Verification")
+        st.caption("Selfie upload (review)")
 
 def goto(screen):
     st.session_state.screen = screen
