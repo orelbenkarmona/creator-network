@@ -3,250 +3,325 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Creator Network — Verified creator marketplace</title>
-  <meta name="description" content="A verified marketplace to connect creators with managers & agencies — with transparent terms and safer partnerships." />
+  <title>Creator Network — Verified partnerships for creators & agencies</title>
+  <meta name="description" content="A verified matching network where creators and agencies connect with transparency, trust, and structured discovery." />
+
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Premium font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    /* softer background + glass look */
-    .bg-grid {
-      background-image:
-        radial-gradient(ellipse at top, rgba(99,102,241,.18), transparent 55%),
-        radial-gradient(ellipse at bottom, rgba(20,184,166,.14), transparent 55%),
-        radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
-      background-size: auto, auto, 36px 36px;
-      background-position: center, center, 0 0;
+    :root{
+      --bg1:#fff7f9;   /* soft rose-white */
+      --bg2:#f6fbff;   /* soft blue-white */
+      --text:#0f172a;  /* slate-900 */
+      --muted:rgba(15, 23, 42, .68);
+      --border:rgba(15, 23, 42, .10);
+
+      --primary:#ff4d8d;  /* rose-coral */
+      --primary2:#7c3aed; /* violet */
+      --trust:#14b8a6;    /* teal */
+      --sun:#ffb020;      /* warm accent */
     }
-    .glass {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+
+    html, body { font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    body { color: var(--text); }
+
+    /* Soft energetic background (female-friendly + premium) */
+    .cn-bg{
+      background:
+        radial-gradient(900px 600px at 10% 5%, rgba(255, 77, 141, .18), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(20, 184, 166, .14), transparent 55%),
+        radial-gradient(900px 600px at 65% 90%, rgba(255, 176, 32, .12), transparent 60%),
+        linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 55%, #ffffff 100%);
+      min-height: 100vh;
+    }
+
+    .glass{
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 60px rgba(15, 23, 42, .08);
       backdrop-filter: blur(14px);
     }
-    .pill {
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
+
+    .btn-primary{
+      background: linear-gradient(90deg, var(--primary) 0%, var(--primary2) 100%);
+      box-shadow: 0 14px 30px rgba(255,77,141,.20);
     }
-    .btn-primary {
-      background: linear-gradient(135deg, rgba(244,63,94,1), rgba(99,102,241,1));
+
+    .btn-primary:hover{ filter: brightness(1.03); }
+
+    .badge{
+      border: 1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.70);
     }
+
+    .badge-verify{
+      border: 1px solid rgba(20,184,166,.25);
+      background: rgba(20,184,166,.10);
+      color: rgba(6,95,70,1);
+    }
+
+    .divider{
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(15,23,42,.10), transparent);
+    }
+
+    /* nicer links */
+    a{ text-decoration: none; }
   </style>
 </head>
 
-<body class="bg-slate-950 text-white bg-grid">
+<body class="cn-bg">
   <!-- Top bar -->
   <header class="max-w-6xl mx-auto px-6 pt-8 flex items-center justify-between">
     <div class="flex items-center gap-3">
-      <div class="w-9 h-9 rounded-xl glass flex items-center justify-center">🔥</div>
-      <div class="font-semibold tracking-tight">Creator Network</div>
+      <div class="w-10 h-10 rounded-2xl glass flex items-center justify-center font-extrabold">
+        CN
+      </div>
+      <div class="font-extrabold tracking-tight text-slate-900">Creator Network</div>
     </div>
 
-    <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
-      <a href="#how" class="hover:text-white">How it works</a>
-      <a href="#trust" class="hover:text-white">Trust</a>
-      <a href="#pricing" class="hover:text-white">Pricing</a>
-      <a href="#faq" class="hover:text-white">FAQ</a>
+    <nav class="hidden md:flex items-center gap-7 text-sm text-slate-600">
+      <a href="#how" class="hover:text-slate-900">How it works</a>
+      <a href="#trust" class="hover:text-slate-900">Trust</a>
+      <a href="#features" class="hover:text-slate-900">Features</a>
+      <a href="#faq" class="hover:text-slate-900">FAQ</a>
     </nav>
 
     <div class="flex items-center gap-3">
-      <a href="#waitlist" class="hidden sm:inline text-sm text-slate-300 hover:text-white">Join waitlist</a>
       <a
         href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/"
         target="_blank"
-        class="inline-flex items-center gap-2 px-4 py-2 rounded-xl btn-primary text-sm font-semibold shadow-lg shadow-pink-500/20 hover:opacity-95"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl btn-primary text-white text-sm font-bold"
       >
-        Launch App <span class="opacity-80">→</span>
+        Launch App <span class="opacity-85">→</span>
       </a>
     </div>
   </header>
 
   <!-- Hero -->
-  <main class="max-w-6xl mx-auto px-6 pt-14 pb-14">
-    <section class="glass rounded-3xl p-7 md:p-10">
-      <div class="flex flex-col gap-6">
-        <div class="flex flex-wrap items-center gap-2">
-          <span class="pill text-xs text-slate-200 px-3 py-1 rounded-full">Trust-first</span>
-          <span class="pill text-xs text-slate-200 px-3 py-1 rounded-full">Transparent deals</span>
-          <span class="pill text-xs text-slate-200 px-3 py-1 rounded-full">Verified profiles</span>
-          <span class="pill text-xs text-slate-200 px-3 py-1 rounded-full">Spam-proof matching</span>
-        </div>
+  <main class="max-w-6xl mx-auto px-6 pt-10 pb-14">
+    <section class="glass rounded-[28px] p-8 md:p-12">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <div class="flex flex-wrap gap-2">
+            <span class="badge badge-verify text-xs font-semibold px-3 py-1 rounded-full">Verification layer</span>
+            <span class="badge text-xs font-semibold px-3 py-1 rounded-full text-slate-700">Structured discovery</span>
+            <span class="badge text-xs font-semibold px-3 py-1 rounded-full text-slate-700">Business-first</span>
+          </div>
 
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
-          Verified marketplace to connect
-          <span class="text-pink-300">creators</span>
-          with
-          <span class="text-teal-200">managers & agencies</span>.
-        </h1>
+          <h1 class="mt-5 text-4xl md:text-5xl font-extrabold leading-tight">
+            Verified partnerships for creators and agencies.
+          </h1>
 
-        <p class="text-slate-300 max-w-2xl text-base md:text-lg leading-relaxed">
-          No more random DMs. Compare transparent terms, verified profiles, and performance-based partnerships — in one place.
-        </p>
+          <p class="mt-4 text-base md:text-lg" style="color: var(--muted);">
+            Creator Network is a matching engine for professional creator partnerships —
+            built to replace random DMs with verified profiles, transparent expectations, and faster collaboration.
+          </p>
 
-        <div class="flex flex-col sm:flex-row gap-3 sm:items-center">
-          <a
-            href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/"
-            target="_blank"
-            class="inline-flex justify-center items-center gap-2 px-5 py-3 rounded-2xl btn-primary font-semibold shadow-lg shadow-indigo-500/20 hover:opacity-95"
-          >
-            Launch App <span class="opacity-80">→</span>
-          </a>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a
+              href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/"
+              target="_blank"
+              class="px-5 py-3 rounded-2xl btn-primary text-white font-bold"
+            >
+              Create a Profile
+            </a>
 
-          <a
-            href="#waitlist"
-            class="inline-flex justify-center items-center gap-2 px-5 py-3 rounded-2xl pill font-semibold text-slate-100 hover:bg-white/10"
-          >
-            Join Waitlist
-          </a>
+            <a
+              href="#how"
+              class="px-5 py-3 rounded-2xl border border-slate-200 bg-white/60 font-bold text-slate-900 hover:bg-white"
+            >
+              See How It Works
+            </a>
+          </div>
 
-          <div class="text-xs text-slate-400 sm:ml-2">
-            Demo build • Garage MVP • Early access
+          <div class="mt-6 text-sm text-slate-600">
+            Landing page explains the platform. The app is where profiles, search, and messaging happen.
           </div>
         </div>
 
-        <!-- Social proof -->
-        <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">
-          <div class="pill rounded-2xl p-4">
-            <div class="text-xs text-slate-400">Problem</div>
-            <div class="mt-1 font-semibold">Low trust & zero transparency</div>
-            <div class="mt-1 text-sm text-slate-300">Creators get spam. Agencies waste time. Deals are opaque.</div>
+        <!-- Right: product preview block (no fake screenshots required yet) -->
+        <div class="relative">
+          <div class="glass rounded-2xl p-5">
+            <div class="text-sm font-bold text-slate-900">Preview</div>
+            <div class="mt-1 text-sm text-slate-600">Marketplace • Profiles • Messaging</div>
+
+            <div class="mt-4 grid gap-3">
+              <div class="rounded-2xl border border-slate-200 bg-white/70 p-4">
+                <div class="flex items-center justify-between">
+                  <div class="font-bold">Verified profiles</div>
+                  <span class="text-xs px-2 py-1 rounded-full badge-verify">Verified</span>
+                </div>
+                <div class="mt-2 text-sm text-slate-600">
+                  Clear niche + location + intent. Less noise. Better fit.
+                </div>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 bg-white/70 p-4">
+                <div class="font-bold">Structured discovery</div>
+                <div class="mt-2 text-sm text-slate-600">
+                  Search by niche, location, and profile type. Shortlist and connect.
+                </div>
+              </div>
+
+              <div class="rounded-2xl border border-slate-200 bg-white/70 p-4">
+                <div class="font-bold">Secure messaging</div>
+                <div class="mt-2 text-sm text-slate-600">
+                  Start partnerships without exposing private contact info upfront.
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="pill rounded-2xl p-4">
-            <div class="text-xs text-slate-400">Solution</div>
-            <div class="mt-1 font-semibold">Verified matching + clear terms</div>
-            <div class="mt-1 text-sm text-slate-300">Profiles, verification, transparent offers, reputation.</div>
-          </div>
-          <div class="pill rounded-2xl p-4">
-            <div class="text-xs text-slate-400">Outcome</div>
-            <div class="mt-1 font-semibold">Faster, safer partnerships</div>
-            <div class="mt-1 text-sm text-slate-300">Build long-term relationships without guessing.</div>
+
+          <!-- subtle accent dot -->
+          <div class="absolute -top-6 -right-6 w-20 h-20 rounded-full"
+               style="background: radial-gradient(circle, rgba(255,77,141,.35), transparent 65%);">
           </div>
         </div>
       </div>
     </section>
+
+    <div class="my-12 divider"></div>
 
     <!-- How it works -->
-    <section id="how" class="mt-12">
-      <div class="flex items-end justify-between gap-4">
-        <h2 class="text-2xl md:text-3xl font-bold tracking-tight">How it works</h2>
-        <div class="text-sm text-slate-400">Simple flow. No BS.</div>
+    <section id="how" class="mt-10">
+      <div class="flex items-end justify-between gap-4 flex-wrap">
+        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">How it works</h2>
+        <div class="text-sm text-slate-600">Simple flow. Professional outcomes.</div>
       </div>
 
-      <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="glass rounded-2xl p-5">
-          <div class="text-sm text-slate-300">1) Create a profile</div>
-          <div class="mt-2 text-slate-400 text-sm">Creator or agency. Add niche, location, proof (optional).</div>
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="glass rounded-2xl p-6">
+          <div class="text-sm font-bold">1) Create a profile</div>
+          <div class="mt-2 text-sm text-slate-600">Creator or agency. Add niche, location, and goals.</div>
         </div>
-        <div class="glass rounded-2xl p-5">
-          <div class="text-sm text-slate-300">2) Get verified</div>
-          <div class="mt-2 text-slate-400 text-sm">Manual verification first. Earn a verified badge.</div>
+
+        <div class="glass rounded-2xl p-6">
+          <div class="text-sm font-bold">2) Discover partners</div>
+          <div class="mt-2 text-sm text-slate-600">Search and filter to find the right fit — not random outreach.</div>
         </div>
-        <div class="glass rounded-2xl p-5">
-          <div class="text-sm text-slate-300">3) Match + message</div>
-          <div class="mt-2 text-slate-400 text-sm">Compare terms, connect, and start partnerships.</div>
+
+        <div class="glass rounded-2xl p-6">
+          <div class="text-sm font-bold">3) Connect and message</div>
+          <div class="mt-2 text-sm text-slate-600">Shortlist profiles, message directly, and start collaboration.</div>
         </div>
       </div>
     </section>
+
+    <div class="my-12 divider"></div>
 
     <!-- Trust -->
-    <section id="trust" class="mt-12">
-      <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Trust layers</h2>
-      <p class="mt-2 text-slate-400 max-w-3xl text-sm md:text-base">
-        The whole point: remove scams, fake flex, and wasted time. Verification + structured offers + reputation.
+    <section id="trust" class="mt-10">
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Trust layers</h2>
+      <p class="mt-2 text-sm md:text-base text-slate-600 max-w-3xl">
+        The goal is to reduce scams, fake profiles, and wasted time — while helping serious creators build long-term partnerships.
       </p>
 
-      <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="glass rounded-2xl p-6">
-          <div class="font-semibold">Verified identity</div>
-          <ul class="mt-3 space-y-2 text-sm text-slate-300 list-disc pl-5">
-            <li>Badge for verified creators / agencies</li>
-            <li>Manual review first (tight control)</li>
-            <li>Reduces impersonation + fake profiles</li>
+          <div class="font-extrabold">Verification signals</div>
+          <ul class="mt-3 space-y-2 text-sm text-slate-700 list-disc pl-5">
+            <li>Verified badge for higher-trust accounts</li>
+            <li>Manual verification first (quality over scale)</li>
+            <li>Reduces impersonation and spam</li>
           </ul>
         </div>
+
         <div class="glass rounded-2xl p-6">
-          <div class="font-semibold">Transparent deal terms</div>
-          <ul class="mt-3 space-y-2 text-sm text-slate-300 list-disc pl-5">
-            <li>Show commission, scope, deliverables</li>
-            <li>Clear expectations upfront</li>
-            <li>Reputation builds long-term trust</li>
+          <div class="font-extrabold">Transparent expectations</div>
+          <ul class="mt-3 space-y-2 text-sm text-slate-700 list-disc pl-5">
+            <li>Clear niche and partnership intent</li>
+            <li>Less guessing, faster decision-making</li>
+            <li>Better alignment before any work begins</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- Pricing -->
-    <section id="pricing" class="mt-12">
-      <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Pricing</h2>
-      <p class="mt-2 text-slate-400 text-sm md:text-base">Start free. Upgrade when there’s real value.</p>
+    <div class="my-12 divider"></div>
 
-      <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
+    <!-- Features -->
+    <section id="features" class="mt-10">
+      <div class="flex items-end justify-between gap-4 flex-wrap">
+        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">Built for real workflow</h2>
+        <div class="text-sm text-slate-600">Marketplace first. Tools come next.</div>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
         <div class="glass rounded-2xl p-6">
-          <div class="text-sm text-slate-400">Free</div>
-          <div class="mt-1 text-3xl font-bold">$0</div>
-          <div class="mt-3 text-sm text-slate-300">For early testing and MVP.</div>
-          <ul class="mt-4 space-y-2 text-sm text-slate-300 list-disc pl-5">
-            <li>Create profile</li>
-            <li>Browse marketplace</li>
-            <li>Basic messaging</li>
-          </ul>
-        </div>
-
-        <div class="glass rounded-2xl p-6 border border-white/20">
-          <div class="text-sm text-slate-200">Pro</div>
-          <div class="mt-1 text-3xl font-bold">$29</div>
-          <div class="mt-3 text-sm text-slate-300">For serious creators and agencies.</div>
-          <ul class="mt-4 space-y-2 text-sm text-slate-300 list-disc pl-5">
-            <li>Verified badge priority</li>
-            <li>Featured listing</li>
-            <li>Advanced filters</li>
-          </ul>
+          <div class="font-extrabold">Creator-first network</div>
+          <p class="mt-2 text-sm text-slate-600">
+            A professional environment built to prioritize safety, clarity, and long-term outcomes.
+          </p>
         </div>
 
         <div class="glass rounded-2xl p-6">
-          <div class="text-sm text-slate-400">Enterprise</div>
-          <div class="mt-1 text-3xl font-bold">Custom</div>
-          <div class="mt-3 text-sm text-slate-300">For bigger teams & workflows.</div>
-          <ul class="mt-4 space-y-2 text-sm text-slate-300 list-disc pl-5">
-            <li>Team accounts</li>
-            <li>Compliance / audit</li>
-            <li>Custom onboarding</li>
-          </ul>
+          <div class="font-extrabold">Search & shortlist</div>
+          <p class="mt-2 text-sm text-slate-600">
+            Find partners by niche and location. Save time and avoid low-intent outreach.
+          </p>
         </div>
+
+        <div class="glass rounded-2xl p-6">
+          <div class="font-extrabold">Direct messaging</div>
+          <p class="mt-2 text-sm text-slate-600">
+            Start conversations inside the platform without immediately sharing private contacts.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-8 glass rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+        <div>
+          <div class="text-xl font-extrabold">Ready to explore the network?</div>
+          <div class="mt-2 text-sm text-slate-600">Create a profile and start finding serious partners today.</div>
+        </div>
+        <a
+          href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/"
+          target="_blank"
+          class="px-5 py-3 rounded-2xl btn-primary text-white font-bold text-center"
+        >
+          Launch App
+        </a>
       </div>
     </section>
 
-    <!-- Waitlist -->
-    <section id="waitlist" class="mt-12">
-      <div class="glass rounded-2xl p-6 md:p-8">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <div>
-            <h2 class="text-2xl font-bold tracking-tight">Join the waitlist</h2>
-            <p class="mt-2 text-slate-300 text-sm">Drop your email. We’ll invite you when verification opens.</p>
-          </div>
-
-          <a href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/" target="_blank" class="px-5 py-3 rounded-xl btn-primary font-semibold hover:opacity-95">
-            Join Waitlist
-          </a>
-        </div>
-        <div class="mt-3 text-xs text-slate-500">
-          This is a demo waitlist (next step: connect to a real database/email tool).
-        </div>
-      </div>
-    </section>
+    <div class="my-12 divider"></div>
 
     <!-- FAQ -->
-    <section id="faq" class="mt-12">
-      <h2 class="text-2xl md:text-3xl font-bold tracking-tight">FAQ</h2>
-      <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+    <section id="faq" class="mt-10">
+      <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">FAQ</h2>
+
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="glass rounded-2xl p-6">
-          <div class="font-semibold">Why two links?</div>
-          <div class="mt-2 text-sm text-slate-300">
-            GitHub Pages hosts the marketing landing. Streamlit hosts the interactive app. Landing → button → app.
+          <div class="font-extrabold">Why are there two links?</div>
+          <div class="mt-2 text-sm text-slate-700">
+            This website is the public introduction. The Streamlit link is the actual product where profiles, search, and messaging run.
           </div>
         </div>
+
         <div class="glass rounded-2xl p-6">
-          <div class="font-semibold">Is verification live?</div>
-          <div class="mt-2 text-sm text-slate-300">
-            Right now it’s a controlled MVP. Manual verification first so quality stays high.
+          <div class="font-extrabold">Is verification fully automated?</div>
+          <div class="mt-2 text-sm text-slate-700">
+            Not yet. We start with controlled, manual verification to keep quality high. Automation comes later.
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-6">
+          <div class="font-extrabold">What platforms are supported?</div>
+          <div class="mt-2 text-sm text-slate-700">
+            Creator Network is platform-agnostic. It’s for creators and agencies across multiple content ecosystems.
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-6">
+          <div class="font-extrabold">What’s next after the marketplace?</div>
+          <div class="mt-2 text-sm text-slate-700">
+            After product-market fit: verification workflows, reputation signals, and optional CRM-style tools for teams.
           </div>
         </div>
       </div>
@@ -254,7 +329,7 @@
 
     <!-- Footer -->
     <footer class="mt-14 pb-10 text-center text-xs text-slate-500">
-      <div>© <span id="y"></span> Creator Network. Demo build.</div>
+      <div>© <span id="y"></span> Creator Network</div>
     </footer>
   </main>
 
