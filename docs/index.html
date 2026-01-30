@@ -676,6 +676,7 @@
       <nav aria-label="Primary">
         <a href="#mission">Mission</a>
         <a href="#impact">Impact</a>
+        <a href="#who">Who it’s for</a>
         <a href="#how">How it works</a>
       </nav>
 
@@ -746,7 +747,41 @@
       </div>
     </section>
 
-    <!-- 4) HOW IT WORKS (the only “product-like” section) -->
+    <!-- 4) WHO IT'S FOR (split) -->
+    <section class="who" id="who" aria-label="Who it’s for">
+      <div class="wrap reveal">
+        <p class="kicker">Who it’s for</p>
+        <h2>Built for both sides.<br><span class="serif">One standard.</span></h2>
+
+        <div class="who-grid" style="margin-top:18px">
+          <div class="panel">
+            <div>
+              <h3>For Creators</h3>
+              <p>Keep control. Keep privacy. Work with serious operators.</p>
+              <ul class="bullets">
+                <li>Clear expectations before you talk</li>
+                <li>Professional boundaries by default</li>
+              </ul>
+            </div>
+            <a class="btn primary" href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/" target="_blank" rel="noopener">I’m a Creator</a>
+          </div>
+
+          <div class="panel">
+            <div>
+              <h3>For Agencies</h3>
+              <p>Find high-intent creators with context, not chaos.</p>
+              <ul class="bullets">
+                <li>Structured profiles, not random outreach</li>
+                <li>Clear terms from the start</li>
+              </ul>
+            </div>
+            <a class="btn" href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/" target="_blank" rel="noopener">I’m an Agency</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5) HOW IT WORKS (the only “product-like” section) -->
     <section class="how" id="how" aria-label="How it works">
       <div class="wrap">
         <div class="how-grid">
@@ -835,69 +870,7 @@
       </div>
     </section>
 
-    <!-- 5) WHO IT'S FOR (split) -->
-    <section class="who" id="who" aria-label="Who it’s for">
-      <div class="wrap reveal">
-        <p class="kicker">Who it’s for</p>
-        <h2>Built for both sides.<br><span class="serif">One standard.</span></h2>
-
-        <div class="who-grid" style="margin-top:18px">
-          <div class="panel">
-            <div>
-              <h3>For Creators</h3>
-              <p>Keep control. Keep privacy. Work with serious operators.</p>
-              <ul class="bullets">
-                <li>Clear expectations before you talk</li>
-                <li>Professional boundaries by default</li>
-              </ul>
-            </div>
-            <a class="btn primary" href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/" target="_blank" rel="noopener">I’m a Creator</a>
-          </div>
-
-          <div class="panel">
-            <div>
-              <h3>For Agencies</h3>
-              <p>Find high-intent creators with context, not chaos.</p>
-              <ul class="bullets">
-                <li>Structured profiles, not random outreach</li>
-                <li>Clear terms from the start</li>
-              </ul>
-            </div>
-            <a class="btn" href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/" target="_blank" rel="noopener">I’m an Agency</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6) FINAL CTA -->
-    <section class="final" id="final" aria-label="Final CTA">
-      <div class="wrap reveal">
-        <div class="final-box">
-          <p class="kicker">Ready</p>
-          <h2>Start clean.<br><span class="serif">Stay private.</span></h2>
-          <p class="lead">No pressure. Just a better way to start a serious partnership.</p>
-
-          <div class="final-actions">
-            <a class="btn primary" href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/" target="_blank" rel="noopener">Launch App</a>
-            <a class="btn" href="#mission">Read Mission</a>
-          </div>
-
-          <footer aria-label="Footer">
-            <div>
-              © <span id="year"></span> Creator Network
-            </div>
-            <div>
-              <a href="#mission">Mission</a>
-              <a href="#impact">Impact</a>
-              <a href="#how">How it works</a>
-              <a href="#home">Top</a>
-            </div>
-          </footer>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7) FOOTER / INDEX (black) -->
+    <!-- 6) FOOTER / INDEX (black) -->
     <section class="footer-slide" id="footer" aria-label="Footer index">
       <div class="wrap reveal">
         <div class="footer-grid">
@@ -936,8 +909,8 @@
             <div class="footer-h">Index</div>
             <a href="#mission">Mission</a>
             <a href="#impact">Impact</a>
-            <a href="#how">How it works</a>
             <a href="#who">Who it’s for</a>
+            <a href="#how">How it works</a>
           </div>
 
           <div class="footer-col">
@@ -967,8 +940,8 @@
 
   <script>
     // minimal JS only: year + reveal + in-page scrolling
-    document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("year2").textContent = new Date().getFullYear();
+    const year = document.getElementById("year");
+    if (year) year.textContent = new Date().getFullYear();
     const year2 = document.getElementById("year2");
     if (year2) year2.textContent = new Date().getFullYear();
 
