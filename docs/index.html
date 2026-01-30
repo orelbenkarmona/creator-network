@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Creator Network — Verified partnerships for creators & agencies</title>
+  <title>CreatorMatch — Verified partnerships for creators & agencies</title>
   <meta name="description" content="A verified matching network where creators and agencies connect with transparency, trust, and structured discovery." />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -15,401 +15,969 @@
 
   <style>
     :root{
-      /* Female-friendly but business */
+      /* Energetic + trustworthy + more feminine palette */
       --bg1:#fff7fb;
       --bg2:#f4fbff;
 
       --text:#0f172a;
       --muted:rgba(15, 23, 42, .68);
-      --border:rgba(15, 23, 42, .10);
 
-      --primary:#ff3d87;   /* rose coral */
-      --primary2:#7c3aed;  /* violet */
-      --trust:#14b8a6;     /* teal trust */
-      --sun:#ffb020;       /* warm accent */
+      --primary:#ff3d87;
+      --primary2:#7c3aed;     /* violet accent */
+      --trust:#14b8a6;        /* teal trust */
+      --sun:#ffb020;          /* warm highlight */
+      --softBlue:#60a5fa;     /* extra soft */
+
+      --card:#ffffff;
+      --border:rgba(15,23,42,.10);
+      --shadow: 0 30px 80px rgba(15,23,42,.08);
+      --shadow2: 0 18px 50px rgba(15,23,42,.07);
     }
 
     html, body { font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
     body { color: var(--text); overflow-x: hidden; }
 
-    /* Background: energetic + premium */
+    /* Background: mostly white, subtle color */
     .cn-bg{
       background:
-        radial-gradient(1200px 700px at 10% 5%, rgba(255, 61, 135, .18), transparent 60%),
-        radial-gradient(900px 600px at 90% 10%, rgba(20, 184, 166, .14), transparent 55%),
-        radial-gradient(900px 600px at 65% 90%, rgba(255, 176, 32, .12), transparent 60%),
-        linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 55%, #ffffff 100%);
+        radial-gradient(900px 520px at 10% 8%, rgba(255, 61, 135, .10), transparent 60%),
+        radial-gradient(900px 520px at 85% 8%, rgba(20, 184, 166, .09), transparent 55%),
+        radial-gradient(900px 520px at 60% 92%, rgba(255, 176, 32, .07), transparent 60%),
+        radial-gradient(900px 520px at 30% 78%, rgba(96, 165, 250, .08), transparent 60%),
+        linear-gradient(180deg, var(--bg2) 0%, #ffffff 55%, #ffffff 100%);
       min-height: 100vh;
     }
 
-    /* Premium glass card */
-    .glass{
-      background: rgba(255,255,255,.72);
+    /* Premium card */
+    .cn-card{
+      background: var(--card);
       border: 1px solid var(--border);
-      box-shadow: 0 18px 60px rgba(15, 23, 42, .08);
-      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow2);
+      border-radius: 24px;
     }
 
-    /* Primary button */
+    /* Buttons */
     .btn-primary{
-      background: linear-gradient(90deg, var(--primary) 0%, var(--primary2) 100%);
-      box-shadow: 0 18px 30px rgba(255,61,135,.18);
-      transform: translateZ(0);
-      transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--primary2) 55%, var(--trust) 110%);
+      box-shadow: 0 18px 30px rgba(255,61,135,.16);
+      transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
     }
     .btn-primary:hover{
       filter: brightness(1.03);
       transform: translateY(-1px);
-      box-shadow: 0 22px 40px rgba(124,58,237,.18);
+      box-shadow: 0 24px 40px rgba(124,58,237,.16);
     }
-
-    .btn-secondary{
-      background: rgba(255,255,255,.70);
+    .btn-ghost{
+      background: rgba(255,255,255,.9);
       border: 1px solid rgba(15,23,42,.12);
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
     }
-    .btn-secondary:hover{
+    .btn-ghost:hover{
       transform: translateY(-1px);
-      background: rgba(255,255,255,.88);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, .08);
+      box-shadow: 0 20px 40px rgba(15,23,42,.07);
+      background: rgba(255,255,255,1);
     }
 
-    .badge{
+    /* Top nav container like screenshots */
+    .nav-shell{
+      background: rgba(255,255,255,.80);
+      border: 1px solid rgba(15,23,42,.06);
+      box-shadow: 0 12px 40px rgba(15,23,42,.06);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+    }
+
+    /* Badge pill */
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
       border: 1px solid rgba(15,23,42,.10);
-      background: rgba(255,255,255,.70);
-    }
-    .badge-verify{
-      border: 1px solid rgba(20,184,166,.25);
-      background: rgba(20,184,166,.10);
-      color: rgba(6,95,70,1);
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 12px 30px rgba(15,23,42,.06);
+      border-radius: 999px;
+      padding: .55rem .9rem;
+      font-weight: 800;
+      font-size: .85rem;
+      color: rgba(15,23,42,.78);
     }
 
+    /* Dotted rings (hero) */
+    .rings{
+      position:absolute;
+      right: 5%;
+      top: 22%;
+      width: 420px;
+      height: 420px;
+      pointer-events:none;
+      opacity: .55;
+    }
+    .ring{
+      position:absolute;
+      inset:0;
+      border-radius:999px;
+      border: 2px dotted rgba(15,23,42,.12);
+      transform: scale(.88);
+    }
+    .ring.r2{ transform: scale(.68); opacity: .75; }
+    .ring.r3{ transform: scale(.48); opacity: .55; }
+
+    /* Floating mini cards */
+    .floaty{ animation: floaty 7s ease-in-out infinite; }
+    .floaty.d1{ animation-delay: -1.4s; }
+    .floaty.d2{ animation-delay: -2.8s; }
+    @keyframes floaty{
+      0% { transform: translateY(0px); }
+      50%{ transform: translateY(-10px); }
+      100%{ transform: translateY(0px); }
+    }
+
+    /* Section spacing like screenshots (big whitespace) */
+    .section{ padding-top: 92px; padding-bottom: 92px; }
+
+    /* Scroll reveal */
+    .reveal{
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .75s ease, transform .75s ease;
+    }
+    .reveal.show{ opacity: 1; transform: translateY(0); }
+
+    /* Icons inside soft squares */
+    .soft-ico{
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      display:flex; align-items:center; justify-content:center;
+      border: 1px solid rgba(15,23,42,.08);
+      box-shadow: 0 12px 28px rgba(15,23,42,.06);
+      font-weight: 900;
+    }
+    .ico-teal{ background: rgba(20,184,166,.10); color: rgba(6,95,70,1); }
+    .ico-violet{ background: rgba(124,58,237,.10); color: rgba(76,29,149,1); }
+    .ico-sun{ background: rgba(255,176,32,.14); color: rgba(146,64,14,1); }
+    .ico-pink{ background: rgba(255,61,135,.10); color: rgba(190,18,60,1); }
+
+    /* Tiny stat bar */
+    .micro{
+      display:flex; align-items:center; gap:.5rem;
+      font-size:.85rem;
+      color: rgba(15,23,42,.72);
+    }
+    .micro svg{ opacity:.85; }
+
+    /* Divider line */
     .divider{
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(15,23,42,.10), transparent);
     }
 
-    /* Scroll reveal */
-    .reveal{
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-    .reveal.show{
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* “3D” hero blob (fake 3D with gradients + animation) */
-    .blob{
-      position: absolute;
-      inset: -120px -120px auto auto;
-      width: 520px;
-      height: 520px;
-      border-radius: 999px;
+    /* Footer (dark like your screenshot) */
+    .footer-shell{
       background:
-        radial-gradient(circle at 30% 30%, rgba(255,61,135,.75), rgba(255,61,135,0) 55%),
-        radial-gradient(circle at 70% 35%, rgba(124,58,237,.65), rgba(124,58,237,0) 60%),
-        radial-gradient(circle at 45% 75%, rgba(20,184,166,.55), rgba(20,184,166,0) 55%);
-      filter: blur(2px);
-      opacity: .55;
-      animation: floaty 9s ease-in-out infinite;
-      pointer-events: none;
+        radial-gradient(900px 420px at 12% 12%, rgba(255, 61, 135, .14), transparent 55%),
+        radial-gradient(900px 420px at 85% 10%, rgba(124, 58, 237, .14), transparent 55%),
+        radial-gradient(900px 420px at 55% 90%, rgba(20, 184, 166, .12), transparent 55%),
+        linear-gradient(180deg, #0b1220 0%, #070d18 100%);
+      border-top: 1px solid rgba(255,255,255,.08);
     }
-    @keyframes floaty{
-      0% { transform: translate(0,0) scale(1); }
-      50%{ transform: translate(-18px, 18px) scale(1.02); }
-      100%{ transform: translate(0,0) scale(1); }
+    .footer-muted{ color: rgba(255,255,255,.68); }
+    .footer-link{
+      color: rgba(255,255,255,.68);
+      transition: color .2s ease, transform .2s ease, opacity .2s ease;
+      display: inline-block;
     }
-
-    /* Floating cards animation */
-    .float-card{
-      animation: bob 6s ease-in-out infinite;
-      transform-origin: center;
+    .footer-link:hover{
+      color: rgba(255,255,255,.92);
+      transform: translateX(1px);
     }
-    .float-card.delay1{ animation-delay: -1.2s; }
-    .float-card.delay2{ animation-delay: -2.4s; }
-    @keyframes bob{
-      0%{ transform: translateY(0px); }
-      50%{ transform: translateY(-10px); }
-      100%{ transform: translateY(0px); }
+    .social-btn{
+      width: 44px; height: 44px;
+      border-radius: 999px;
+      display:flex; align-items:center; justify-content:center;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      transition: transform .2s ease, background .2s ease;
     }
-
-    /* Subtle hover depth */
-    .hover-depth{
-      transition: transform .2s ease, box-shadow .2s ease;
+    .social-btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.10);
     }
-    .hover-depth:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 22px 70px rgba(15, 23, 42, .10);
+    .footer-divider{
+      height: 1px;
+      background: rgba(255,255,255,.10);
+      opacity: .6;
     }
-
-    a{ text-decoration: none; }
   </style>
 </head>
 
 <body class="cn-bg">
-  <!-- Top bar -->
-  <header class="max-w-6xl mx-auto px-6 pt-8 flex items-center justify-between reveal">
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-2xl glass flex items-center justify-center font-extrabold">CN</div>
-      <div class="font-extrabold tracking-tight text-slate-900">Creator Network</div>
-    </div>
-
-    <nav class="hidden md:flex items-center gap-7 text-sm text-slate-600">
-      <a href="#how" class="hover:text-slate-900">How it works</a>
-      <a href="#trust" class="hover:text-slate-900">Trust</a>
-      <a href="#features" class="hover:text-slate-900">Features</a>
-      <a href="#faq" class="hover:text-slate-900">FAQ</a>
-    </nav>
-
-    <a
-      href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/"
-      target="_blank"
-      class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl btn-primary text-white text-sm font-bold"
-    >
-      Launch App <span class="opacity-85">→</span>
-    </a>
-  </header>
-
-  <!-- Hero -->
-  <main class="max-w-6xl mx-auto px-6 pt-10 pb-14 relative">
-    <div class="blob"></div>
-
-    <section class="glass rounded-[30px] p-8 md:p-12 relative overflow-hidden reveal">
-      <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <div class="flex flex-wrap gap-2">
-            <span class="badge badge-verify text-xs font-semibold px-3 py-1 rounded-full">Verification layer</span>
-            <span class="badge text-xs font-semibold px-3 py-1 rounded-full text-slate-700">Structured discovery</span>
-            <span class="badge text-xs font-semibold px-3 py-1 rounded-full text-slate-700">Business-first</span>
-          </div>
-
-          <h1 class="mt-5 text-4xl md:text-6xl font-extrabold leading-tight">
-            Verified partnerships for creators and agencies.
-          </h1>
-
-          <p class="mt-4 text-base md:text-lg" style="color: var(--muted);">
-            Creator Network is a professional matching engine designed to replace random DMs with verified profiles,
-            clearer expectations, and faster collaboration.
-          </p>
-
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a
-              href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/"
-              target="_blank"
-              class="px-5 py-3 rounded-2xl btn-primary text-white font-bold"
-            >
-              Create a Profile
-            </a>
-
-            <a href="#how" class="px-5 py-3 rounded-2xl btn-secondary font-bold text-slate-900">
-              See How It Works
-            </a>
-          </div>
-
-          <div class="mt-6 text-sm text-slate-600">
-            This page introduces the platform. The app runs the marketplace, profiles, and messaging.
-          </div>
-        </div>
-
-        <!-- Faux 3D preview -->
-        <div class="relative">
-          <div class="glass rounded-2xl p-5 hover-depth">
-            <div class="flex items-center justify-between">
-              <div>
-                <div class="text-sm font-extrabold text-slate-900">Live Preview</div>
-                <div class="mt-1 text-sm text-slate-600">Marketplace • Profiles • Messaging</div>
-              </div>
-              <span class="text-xs px-3 py-1 rounded-full badge-verify">Verified</span>
-            </div>
-
-            <div class="mt-5 grid gap-3">
-              <div class="rounded-2xl border border-slate-200 bg-white/70 p-4 float-card">
-                <div class="font-extrabold">Verified profiles</div>
-                <div class="mt-2 text-sm text-slate-600">
-                  Stronger trust signals and higher quality partners.
-                </div>
-              </div>
-
-              <div class="rounded-2xl border border-slate-200 bg-white/70 p-4 float-card delay1">
-                <div class="font-extrabold">Search + filters</div>
-                <div class="mt-2 text-sm text-slate-600">
-                  Niche, location, type. Find partners faster.
-                </div>
-              </div>
-
-              <div class="rounded-2xl border border-slate-200 bg-white/70 p-4 float-card delay2">
-                <div class="font-extrabold">Connect + message</div>
-                <div class="mt-2 text-sm text-slate-600">
-                  Start collaboration inside the platform.
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- floating accents -->
-          <div class="absolute -bottom-8 -left-8 w-24 h-24 rounded-full"
-               style="background: radial-gradient(circle, rgba(20,184,166,.35), transparent 65%);"></div>
-          <div class="absolute -top-8 -right-10 w-28 h-28 rounded-full"
-               style="background: radial-gradient(circle, rgba(255,176,32,.28), transparent 65%);"></div>
-        </div>
-      </div>
-    </section>
-
-    <div class="my-12 divider reveal"></div>
-
-    <!-- How it works -->
-    <section id="how" class="mt-10 reveal">
-      <div class="flex items-end justify-between gap-4 flex-wrap">
-        <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight">How it works</h2>
-        <div class="text-sm text-slate-600">Simple flow. Professional outcomes.</div>
+  <!-- Header -->
+  <header class="max-w-6xl mx-auto px-6 pt-8 reveal">
+    <div class="flex items-center justify-between">
+      <!-- Brand -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-2xl cn-card flex items-center justify-center font-extrabold">CM</div>
+        <div class="font-extrabold tracking-tight text-slate-900">CreatorMatch</div>
       </div>
 
-      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="glass rounded-2xl p-6 hover-depth">
-          <div class="text-sm font-extrabold">1) Create a profile</div>
-          <div class="mt-2 text-sm text-slate-600">Creator or agency. Add niche, location, goals.</div>
-        </div>
-
-        <div class="glass rounded-2xl p-6 hover-depth">
-          <div class="text-sm font-extrabold">2) Discover partners</div>
-          <div class="mt-2 text-sm text-slate-600">Search and filter to find the right fit — not random outreach.</div>
-        </div>
-
-        <div class="glass rounded-2xl p-6 hover-depth">
-          <div class="text-sm font-extrabold">3) Connect and message</div>
-          <div class="mt-2 text-sm text-slate-600">Shortlist profiles, message directly, start collaboration.</div>
-        </div>
-      </div>
-    </section>
-
-    <div class="my-12 divider reveal"></div>
-
-    <!-- Trust -->
-    <section id="trust" class="mt-10 reveal">
-      <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight">Trust layers</h2>
-      <p class="mt-2 text-sm md:text-base text-slate-600 max-w-3xl">
-        Reduce scams, impersonation, and wasted time — while helping creators build long-term partnerships.
-      </p>
-
-      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="glass rounded-2xl p-6 hover-depth">
-          <div class="font-extrabold">Verification signals</div>
-          <ul class="mt-3 space-y-2 text-sm text-slate-700 list-disc pl-5">
-            <li>Verified badge for higher-trust accounts</li>
-            <li>Manual verification first (quality over scale)</li>
-            <li>Reduces fake profiles and spam</li>
-          </ul>
-        </div>
-
-        <div class="glass rounded-2xl p-6 hover-depth">
-          <div class="font-extrabold">Transparent expectations</div>
-          <ul class="mt-3 space-y-2 text-sm text-slate-700 list-disc pl-5">
-            <li>Clear niche and partnership intent</li>
-            <li>Less guessing, faster decisions</li>
-            <li>Better alignment before any work begins</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <div class="my-12 divider reveal"></div>
-
-    <!-- Features -->
-    <section id="features" class="mt-10 reveal">
-      <div class="flex items-end justify-between gap-4 flex-wrap">
-        <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight">Built for real workflow</h2>
-        <div class="text-sm text-slate-600">Marketplace first. Tools come next.</div>
+      <!-- Center nav shell -->
+      <div class="hidden md:flex nav-shell px-6 py-3 items-center gap-8 text-sm font-semibold text-slate-600">
+        <a href="#creators" class="hover:text-slate-900">For Creators</a>
+        <a href="#agencies" class="hover:text-slate-900">For Agencies</a>
+        <a href="#how" class="hover:text-slate-900">How It Works</a>
+        <a href="#stories" class="hover:text-slate-900">Success Stories</a>
       </div>
 
-      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="glass rounded-2xl p-6 hover-depth">
-          <div class="font-extrabold">Creator-first network</div>
-          <p class="mt-2 text-sm text-slate-600">A professional space designed around safety, clarity, outcomes.</p>
-        </div>
-
-        <div class="glass rounded-2xl p-6 hover-depth">
-          <div class="font-extrabold">Search & shortlist</div>
-          <p class="mt-2 text-sm text-slate-600">Find partners by niche, location, and profile type.</p>
-        </div>
-
-        <div class="glass rounded-2xl p-6 hover-depth">
-          <div class="font-extrabold">Secure messaging</div>
-          <p class="mt-2 text-sm text-slate-600">Start conversations without exposing private contacts upfront.</p>
-        </div>
-      </div>
-
-      <div class="mt-8 glass rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-5 hover-depth">
-        <div>
-          <div class="text-xl font-extrabold">Ready to explore the network?</div>
-          <div class="mt-2 text-sm text-slate-600">Create a profile and start finding serious partners today.</div>
-        </div>
+      <!-- Right actions -->
+      <div class="flex items-center gap-3">
+        <a href="#faq" class="hidden sm:inline text-sm font-semibold text-slate-600 hover:text-slate-900">Sign In</a>
         <a
           href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/"
           target="_blank"
-          class="px-5 py-3 rounded-2xl btn-primary text-white font-bold text-center"
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-full btn-primary text-white text-sm font-extrabold"
         >
-          Launch App
+          Launch App <span class="opacity-85">→</span>
         </a>
       </div>
-    </section>
+    </div>
+  </header>
 
-    <div class="my-12 divider reveal"></div>
+  <!-- HERO -->
+  <main class="max-w-6xl mx-auto px-6 pb-10">
+    <section class="section pt-14 relative reveal">
+      <div class="rings hidden md:block">
+        <div class="ring"></div>
+        <div class="ring r2"></div>
+        <div class="ring r3"></div>
+      </div>
 
-    <!-- FAQ -->
-    <section id="faq" class="mt-10 reveal">
-      <h2 class="text-2xl md:text-4xl font-extrabold tracking-tight">FAQ</h2>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <!-- Left -->
+        <div>
+          <div class="pill">
+            <span class="inline-flex items-center justify-center w-7 h-7 rounded-full"
+                  style="background: rgba(20,184,166,.12); color: rgba(6,95,70,1); font-weight: 900;">
+              ✓
+            </span>
+            Built for safe, verified creator partnerships
+          </div>
 
-      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="glass rounded-2xl p-6 hover-depth">
-          <div class="font-extrabold">Why are there two links?</div>
-          <div class="mt-2 text-sm text-slate-700">
-            This is the public introduction. The “Launch App” link opens the marketplace product (profiles, search, messaging).
+          <h1 class="mt-6 text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.05]">
+            Verified partnerships<br class="hidden sm:block" />
+            for creators and agencies
+          </h1>
+
+          <p class="mt-5 text-lg md:text-xl" style="color: var(--muted); max-width: 44ch;">
+            Replace random DMs with verified profiles, transparent terms, and a clean marketplace built to help you grow.
+          </p>
+
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a
+              href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/"
+              target="_blank"
+              class="px-7 py-4 rounded-full btn-primary text-white font-extrabold"
+            >
+              I’m a Creator
+            </a>
+            <a href="#agencies" class="px-7 py-4 rounded-full btn-ghost font-extrabold text-slate-900">
+              I’m an Agency
+            </a>
+          </div>
+
+          <div class="mt-9 flex flex-wrap gap-7">
+            <div class="micro">
+              <span class="soft-ico ico-teal">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2l8 4v6c0 5-3.5 9.4-8 10-4.5-.6-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Verified profiles
+            </div>
+
+            <div class="micro">
+              <span class="soft-ico ico-sun">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 19h16M7 16V9m5 7V5m5 11v-8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+              Transparent terms
+            </div>
+
+            <div class="micro">
+              <span class="soft-ico ico-violet">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M16 11c1.66 0 3-1.57 3-3.5S17.66 4 16 4s-3 1.57-3 3.5S14.34 11 16 11z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M8 13c1.66 0 3-1.57 3-3.5S9.66 6 8 6 5 7.57 5 9.5 6.34 13 8 13z" stroke="currentColor" stroke-width="2"/>
+                  <path d="M16 14c-2.5 0-4.5 1.3-4.5 3v3h9v-3c0-1.7-2-3-4.5-3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M8 16c-2.5 0-4.5 1.3-4.5 3v1h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
+              Secure discovery
+            </div>
           </div>
         </div>
 
-        <div class="glass rounded-2xl p-6 hover-depth">
-          <div class="font-extrabold">Is verification automated?</div>
-          <div class="mt-2 text-sm text-slate-700">
-            Not yet. We start with controlled, manual verification to keep quality high. Automation comes later.
-          </div>
-        </div>
+        <!-- Right: UI mockup stack -->
+        <div class="relative">
+          <div class="cn-card p-6 md:p-7" style="box-shadow: var(--shadow); border-radius: 28px;">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-sm font-extrabold text-slate-900">Profile Preview</div>
+                <div class="text-sm text-slate-500">Creator, verified</div>
+              </div>
+              <span class="px-4 py-2 rounded-full text-sm font-extrabold"
+                    style="background: rgba(20,184,166,.14); color: rgba(6,95,70,1); border: 1px solid rgba(20,184,166,.22);">
+                Verified ✓
+              </span>
+            </div>
 
-        <div class="glass rounded-2xl p-6 hover-depth">
-          <div class="font-extrabold">Is this only for one platform?</div>
-          <div class="mt-2 text-sm text-slate-700">
-            No. Creator Network is platform-agnostic. It supports creators and agencies across multiple ecosystems.
-          </div>
-        </div>
+            <div class="mt-6 grid gap-3">
+              <div class="rounded-2xl border border-slate-100 bg-white p-4">
+                <div class="font-extrabold text-slate-900">Find your match</div>
+                <div class="mt-1 text-sm text-slate-500">Compare agencies side-by-side</div>
+                <div class="mt-4 rounded-2xl bg-slate-50 border border-slate-100 p-4">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-2xl flex items-center justify-center font-extrabold text-white"
+                           style="background: linear-gradient(90deg, var(--primary), var(--primary2));">G</div>
+                      <div>
+                        <div class="font-extrabold text-slate-900">Growth Partners</div>
+                        <div class="text-xs text-slate-500">203 verified deals</div>
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <div class="font-extrabold">15%</div>
+                      <div class="text-xs text-slate-500">⭐ 4.8</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-        <div class="glass rounded-2xl p-6 hover-depth">
-          <div class="font-extrabold">What’s next after MVP?</div>
-          <div class="mt-2 text-sm text-slate-700">
-            Reputation signals, verification workflows, and optional CRM-style tools for teams — after fit is proven.
+              <div class="rounded-2xl border border-slate-100 bg-white p-4">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <div class="font-extrabold text-slate-900">Match Found!</div>
+                    <div class="text-sm text-slate-500">Simple, clear terms</div>
+                  </div>
+                  <div class="soft-ico ico-teal">✓</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating accents -->
+          <div class="cn-card px-5 py-4 floaty absolute -left-6 -bottom-8 hidden sm:block" style="border-radius: 22px;">
+            <div class="text-sm font-extrabold">Transparent rates</div>
+            <div class="text-sm text-slate-500">No guessing</div>
+          </div>
+
+          <div class="cn-card px-5 py-4 floaty d1 absolute -right-6 top-10 hidden sm:block" style="border-radius: 22px;">
+            <div class="text-sm font-extrabold text-emerald-600">↗ Growth</div>
+            <div class="text-sm text-slate-500">Better partners</div>
+          </div>
+
+          <div class="cn-card px-5 py-4 floaty d2 absolute right-2 -bottom-16 hidden md:block" style="border-radius: 22px;">
+            <div class="text-sm font-extrabold">⭐ Trust signals</div>
+            <div class="text-sm text-slate-500">Verified reviews</div>
           </div>
         </div>
       </div>
     </section>
 
-    <footer class="mt-14 pb-10 text-center text-xs text-slate-500 reveal">
-      <div>© <span id="y"></span> Creator Network</div>
-    </footer>
+    <div class="divider reveal"></div>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="section text-center reveal">
+      <div class="text-sm font-semibold text-slate-500">Simple Process</div>
+      <h2 class="mt-4 text-5xl font-extrabold tracking-tight">How It Works</h2>
+      <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">
+        A streamlined flow that connects you with verified partners fast — without the randomness.
+      </p>
+
+      <div class="mt-14 relative">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div class="cn-card p-7 text-left">
+            <div class="soft-ico ico-teal mb-5">✓</div>
+            <div class="text-xl font-extrabold">Create Your Profile</div>
+            <p class="mt-3 text-slate-600">
+              Set up your profile with goals and preferences. Keep personal contact details private.
+            </p>
+          </div>
+
+          <div class="cn-card p-7 text-left">
+            <div class="soft-ico ico-violet mb-5">≋</div>
+            <div class="text-xl font-extrabold">Browse & Compare</div>
+            <p class="mt-3 text-slate-600">
+              Explore verified partners. Compare commission ranges, services, and proof.
+            </p>
+          </div>
+
+          <div class="cn-card p-7 text-left">
+            <div class="soft-ico ico-teal mb-5">✉</div>
+            <div class="text-xl font-extrabold">Review & Chat</div>
+            <p class="mt-3 text-slate-600">
+              Shortlist options and message safely inside the platform before sharing anything personal.
+            </p>
+          </div>
+
+          <div class="cn-card p-7 text-left">
+            <div class="soft-ico ico-sun mb-5">⚡</div>
+            <div class="text-xl font-extrabold">Partner & Grow</div>
+            <p class="mt-3 text-slate-600">
+              Choose the right fit and grow with clarity, structure, and professional standards.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-12 flex justify-center">
+          <a href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/"
+             target="_blank"
+             class="px-8 py-4 rounded-full btn-primary text-white font-extrabold">
+            Get Started
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider reveal"></div>
+
+    <!-- FEATURES -->
+    <section id="features" class="section text-center reveal">
+      <div class="text-sm font-semibold text-slate-500">Platform Features</div>
+      <h2 class="mt-4 text-6xl font-extrabold tracking-tight">Built for</h2>
+      <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">
+        Safe, transparent, and built for growth — for creators and agencies that want serious partnerships.
+      </p>
+
+      <div class="mt-14 grid grid-cols-1 md:grid-cols-4 gap-6 text-left">
+        <div class="cn-card p-7">
+          <div class="soft-ico ico-teal mb-5">🛡</div>
+          <div class="text-xl font-extrabold">Verified Agencies</div>
+          <p class="mt-3 text-slate-600">Vetted partners with clearer accountability and quality signals.</p>
+        </div>
+
+        <div class="cn-card p-7">
+          <div class="soft-ico ico-violet mb-5">📊</div>
+          <div class="text-xl font-extrabold">Real Context</div>
+          <p class="mt-3 text-slate-600">Less hype. More proof, transparency, and expectation alignment.</p>
+        </div>
+
+        <div class="cn-card p-7">
+          <div class="soft-ico ico-teal mb-5">📄</div>
+          <div class="text-xl font-extrabold">Safer Agreements</div>
+          <p class="mt-3 text-slate-600">Cleaner terms and professional collaboration standards.</p>
+        </div>
+
+        <div class="cn-card p-7">
+          <div class="soft-ico ico-sun mb-5">⇄</div>
+          <div class="text-xl font-extrabold">Compare Partners</div>
+          <p class="mt-3 text-slate-600">Side-by-side evaluation of rates, services, and track record.</p>
+        </div>
+
+        <div class="cn-card p-7">
+          <div class="soft-ico ico-violet mb-5">🔒</div>
+          <div class="text-xl font-extrabold">Privacy First</div>
+          <p class="mt-3 text-slate-600">You control what you share. Message safely before moving off-platform.</p>
+        </div>
+
+        <div class="cn-card p-7">
+          <div class="soft-ico ico-teal mb-5">📈</div>
+          <div class="text-xl font-extrabold">Growth-Ready</div>
+          <p class="mt-3 text-slate-600">A foundation built to support performance tracking and scaling.</p>
+        </div>
+
+        <div class="cn-card p-7">
+          <div class="soft-ico ico-sun mb-5">✨</div>
+          <div class="text-xl font-extrabold">Smart Discovery</div>
+          <p class="mt-3 text-slate-600">Structured profiles make matching faster and more accurate.</p>
+        </div>
+
+        <div class="cn-card p-7">
+          <div class="soft-ico ico-pink mb-5">💬</div>
+          <div class="text-xl font-extrabold">Secure Chat</div>
+          <p class="mt-3 text-slate-600">Keep boundaries until trust is earned. Stay professional from day one.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider reveal"></div>
+
+    <!-- FOR CREATORS -->
+    <section id="creators" class="section reveal">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="text-sm font-semibold text-slate-500">For Creators</div>
+          <h3 class="mt-4 text-6xl font-extrabold tracking-tight">
+            Grow your income with<br class="hidden sm:block"/> verified partners
+          </h3>
+          <p class="mt-5 text-lg text-slate-600 max-w-xl">
+            Stop the guesswork. Connect with verified agencies and compare terms before you commit.
+          </p>
+
+          <div class="mt-8 grid sm:grid-cols-2 gap-4 text-slate-700">
+            <div class="flex gap-3 items-start">
+              <div class="soft-ico ico-teal mt-1">✓</div>
+              <div>
+                <div class="font-extrabold">Compare side-by-side</div>
+                <div class="text-slate-600 mt-1">Rates, niche fit, and what you actually get.</div>
+              </div>
+            </div>
+
+            <div class="flex gap-3 items-start">
+              <div class="soft-ico ico-violet mt-1">✓</div>
+              <div>
+                <div class="font-extrabold">Transparent commission</div>
+                <div class="text-slate-600 mt-1">Clear expectations from the start.</div>
+              </div>
+            </div>
+
+            <div class="flex gap-3 items-start">
+              <div class="soft-ico ico-sun mt-1">✓</div>
+              <div>
+                <div class="font-extrabold">Professional standards</div>
+                <div class="text-slate-600 mt-1">Less chaos. More structure.</div>
+              </div>
+            </div>
+
+            <div class="flex gap-3 items-start">
+              <div class="soft-ico ico-teal mt-1">✓</div>
+              <div>
+                <div class="font-extrabold">Privacy & discretion</div>
+                <div class="text-slate-600 mt-1">Message safely without exposing contacts.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10">
+            <a href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/"
+               target="_blank"
+               class="px-8 py-4 rounded-full btn-primary text-white font-extrabold">
+              Browse Agencies
+            </a>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="cn-card p-7" style="box-shadow: var(--shadow); border-radius: 28px;">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-sm font-extrabold text-slate-900">Find Your Match</div>
+                <div class="text-sm text-slate-500">Compare top partners</div>
+              </div>
+              <span class="px-4 py-2 rounded-full text-sm font-extrabold"
+                    style="background: rgba(20,184,166,.12); color: rgba(6,95,70,1); border: 1px solid rgba(20,184,166,.20);">
+                Verified
+              </span>
+            </div>
+
+            <div class="mt-6 space-y-3">
+              <div class="rounded-2xl bg-slate-50 border border-slate-100 p-5 flex items-center justify-between">
+                <div>
+                  <div class="font-extrabold">Elite Management Co.</div>
+                  <div class="text-sm text-slate-500">142 verified deals</div>
+                </div>
+                <div class="text-right">
+                  <div class="font-extrabold">15%</div>
+                  <div class="text-sm text-slate-500">⭐ 4.9</div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl bg-slate-50 border border-slate-100 p-5 flex items-center justify-between">
+                <div>
+                  <div class="font-extrabold">Creator First Agency</div>
+                  <div class="text-sm text-slate-500">89 verified deals</div>
+                </div>
+                <div class="text-right">
+                  <div class="font-extrabold">12%</div>
+                  <div class="text-sm text-slate-500">⭐ 4.8</div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl bg-slate-50 border border-slate-100 p-5 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-2xl flex items-center justify-center font-extrabold text-white"
+                       style="background: linear-gradient(90deg, var(--primary), var(--primary2));">G</div>
+                  <div>
+                    <div class="font-extrabold">Growth Partners</div>
+                    <div class="text-sm text-slate-500">203 verified deals</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="font-extrabold">15%</div>
+                  <div class="text-sm text-slate-500">⭐ 4.8</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cn-card px-5 py-4 absolute -bottom-8 -left-8 hidden sm:block" style="border-radius: 22px;">
+            <div class="text-sm font-extrabold">Compare offers</div>
+            <div class="text-sm text-slate-500">Side-by-side</div>
+          </div>
+
+          <div class="cn-card px-5 py-4 absolute -top-8 right-5 hidden sm:block" style="border-radius: 22px;">
+            <div class="text-sm font-extrabold text-emerald-600">Trusted partners</div>
+            <div class="text-sm text-slate-500">Verified first</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider reveal"></div>
+
+    <!-- FOR AGENCIES -->
+    <section id="agencies" class="section reveal">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="text-sm font-semibold text-slate-500">For Agencies</div>
+          <h3 class="mt-4 text-6xl font-extrabold tracking-tight">
+            Find serious creators<br class="hidden sm:block"/> without cold outreach
+          </h3>
+          <p class="mt-5 text-lg text-slate-600 max-w-xl">
+            Skip random DMs. Connect with creators who want a professional partner and clear terms.
+          </p>
+
+          <div class="mt-8 grid sm:grid-cols-2 gap-4 text-slate-700">
+            <div class="flex gap-3 items-start">
+              <div class="soft-ico ico-teal mt-1">✓</div>
+              <div>
+                <div class="font-extrabold">Pre-qualified profiles</div>
+                <div class="text-slate-600 mt-1">Designed for serious intent.</div>
+              </div>
+            </div>
+
+            <div class="flex gap-3 items-start">
+              <div class="soft-ico ico-violet mt-1">✓</div>
+              <div>
+                <div class="font-extrabold">Filter by fit</div>
+                <div class="text-slate-600 mt-1">Niche, goals, location.</div>
+              </div>
+            </div>
+
+            <div class="flex gap-3 items-start">
+              <div class="soft-ico ico-sun mt-1">✓</div>
+              <div>
+                <div class="font-extrabold">Show proof</div>
+                <div class="text-slate-600 mt-1">Build reputation, not hype.</div>
+              </div>
+            </div>
+
+            <div class="flex gap-3 items-start">
+              <div class="soft-ico ico-teal mt-1">✓</div>
+              <div>
+                <div class="font-extrabold">Cleaner onboarding</div>
+                <div class="text-slate-600 mt-1">Chat first, align, then commit.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10">
+            <a href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/"
+               target="_blank"
+               class="px-8 py-4 rounded-full btn-primary text-white font-extrabold">
+              Find Creators
+            </a>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="cn-card p-7" style="box-shadow: var(--shadow); border-radius: 28px;">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-sm font-extrabold text-slate-900">Creator Pipeline</div>
+                <div class="text-sm text-slate-500">New matches today</div>
+              </div>
+              <span class="px-4 py-2 rounded-full text-sm font-extrabold"
+                    style="background: rgba(124,58,237,.12); color: rgba(76,29,149,1); border: 1px solid rgba(124,58,237,.20);">
+                Agency
+              </span>
+            </div>
+
+            <div class="mt-6 space-y-3">
+              <div class="rounded-2xl bg-slate-50 border border-slate-100 p-5 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-2xl flex items-center justify-center font-extrabold text-white"
+                       style="background: linear-gradient(90deg, var(--primary), var(--primary2));">A</div>
+                  <div>
+                    <div class="font-extrabold">Avery D.</div>
+                    <div class="text-sm text-slate-500">Lifestyle • US</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="font-extrabold">High intent</div>
+                  <div class="text-sm text-slate-500">Verified</div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl bg-slate-50 border border-slate-100 p-5 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-2xl flex items-center justify-center font-extrabold text-white"
+                       style="background: linear-gradient(90deg, var(--primary), var(--primary2));">M</div>
+                  <div>
+                    <div class="font-extrabold">Maya S.</div>
+                    <div class="text-sm text-slate-500">Fitness • UK</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="font-extrabold">Good fit</div>
+                  <div class="text-sm text-slate-500">Verified</div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl bg-slate-50 border border-slate-100 p-5 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-2xl flex items-center justify-center font-extrabold text-white"
+                       style="background: linear-gradient(90deg, var(--primary), var(--primary2));">J</div>
+                  <div>
+                    <div class="font-extrabold">Jordan K.</div>
+                    <div class="text-sm text-slate-500">Gaming • CA</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="font-extrabold">Shortlist</div>
+                  <div class="text-sm text-slate-500">Verified</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cn-card px-5 py-4 absolute -bottom-8 -left-8 hidden sm:block" style="border-radius: 22px;">
+            <div class="text-sm font-extrabold">12 new matches</div>
+            <div class="text-sm text-slate-500">Today</div>
+          </div>
+
+          <div class="cn-card px-5 py-4 absolute -top-8 right-5 hidden sm:block" style="border-radius: 22px;">
+            <div class="text-sm font-extrabold text-emerald-600">Avg reply 2h</div>
+            <div class="text-sm text-slate-500">Faster outreach</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider reveal"></div>
+
+    <!-- SUCCESS STORIES -->
+    <section id="stories" class="section text-center reveal">
+      <div class="text-sm font-semibold text-slate-500">Success Stories</div>
+      <h2 class="mt-4 text-5xl font-extrabold tracking-tight">Real partnerships, real growth</h2>
+      <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">
+        Verified profiles and structured matching create better outcomes for creators and agencies.
+      </p>
+
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+        <div class="cn-card p-7">
+          <div class="text-sm font-semibold text-slate-500">Creator</div>
+          <div class="mt-3 text-xl font-extrabold">“I stopped guessing.”</div>
+          <p class="mt-3 text-slate-600">
+            I compared agencies side-by-side, checked proof, and found a professional partner fast.
+          </p>
+          <div class="mt-5 text-sm font-extrabold text-slate-900">Nina R.</div>
+        </div>
+
+        <div class="cn-card p-7">
+          <div class="text-sm font-semibold text-slate-500">Agency</div>
+          <div class="mt-3 text-xl font-extrabold">“Higher match quality.”</div>
+          <p class="mt-3 text-slate-600">
+            Better profiles saved time. We started new partnerships without cold outreach.
+          </p>
+          <div class="mt-5 text-sm font-extrabold text-slate-900">Bright Talent Co.</div>
+        </div>
+
+        <div class="cn-card p-7">
+          <div class="text-sm font-semibold text-slate-500">Creator</div>
+          <div class="mt-3 text-xl font-extrabold">“Finally feels premium.”</div>
+          <p class="mt-3 text-slate-600">
+            Clean chat, clear terms, and verification made everything feel safe and professional.
+          </p>
+          <div class="mt-5 text-sm font-extrabold text-slate-900">Leah M.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider reveal"></div>
+
+    <!-- FAQ -->
+    <section id="faq" class="section reveal">
+      <div class="text-center">
+        <div class="text-sm font-semibold text-slate-500">FAQ</div>
+        <h2 class="mt-4 text-5xl font-extrabold tracking-tight">Common questions</h2>
+        <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">
+          Quick answers to help you get started.
+        </p>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="cn-card p-7">
+          <div class="font-extrabold">Is verification automated?</div>
+          <p class="mt-3 text-slate-600">
+            Not yet. We start manual to keep quality high, then scale with automation later.
+          </p>
+        </div>
+
+        <div class="cn-card p-7">
+          <div class="font-extrabold">Is this only for one platform?</div>
+          <p class="mt-3 text-slate-600">
+            No. CreatorMatch is platform-agnostic and supports multiple creator ecosystems.
+          </p>
+        </div>
+
+        <div class="cn-card p-7">
+          <div class="font-extrabold">Why a separate app link?</div>
+          <p class="mt-3 text-slate-600">
+            This page is the public intro. “Launch App” opens the marketplace product.
+          </p>
+        </div>
+
+        <div class="cn-card p-7">
+          <div class="font-extrabold">What comes next?</div>
+          <p class="mt-3 text-slate-600">
+            Stronger reputation signals, better verification workflows, and optional team tools.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section text-center reveal">
+      <div class="cn-card p-10 md:p-12">
+        <div class="text-sm font-semibold text-slate-500">Ready to start?</div>
+        <div class="mt-4 text-4xl md:text-5xl font-extrabold tracking-tight">
+          Build better partnerships today
+        </div>
+        <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">
+          Create a profile, get verified, and connect with serious partners in minutes.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+          <a href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/"
+             target="_blank"
+             class="px-8 py-4 rounded-full btn-primary text-white font-extrabold">
+            Launch App
+          </a>
+          <a href="#how" class="px-8 py-4 rounded-full btn-ghost font-extrabold text-slate-900">
+            See How It Works
+          </a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
+  <!-- FOOTER (like your screenshot) -->
+  <footer class="footer-shell">
+    <div class="max-w-6xl mx-auto px-6 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-6 gap-10">
+        <!-- Brand + blurb -->
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl flex items-center justify-center font-extrabold"
+                 style="background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.10); color: rgba(255,255,255,.92);">
+              ✦
+            </div>
+            <div class="font-extrabold tracking-tight text-white text-lg">CreatorMatch</div>
+          </div>
+
+          <p class="mt-4 footer-muted leading-relaxed max-w-sm">
+            The verified marketplace connecting creators with professional agencies.
+            Safe, transparent, performance-based partnerships.
+          </p>
+
+          <!-- Socials -->
+          <div class="mt-6 flex gap-3">
+            <a class="social-btn" href="#" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M22 5.8c-.7.3-1.4.5-2.2.6.8-.5 1.4-1.2 1.7-2.1-.7.4-1.5.8-2.4.9A3.6 3.6 0 0 0 12.8 6c0 .3 0 .6.1.9A10.2 10.2 0 0 1 3 4.1a3.6 3.6 0 0 0 1.1 4.8c-.6 0-1.2-.2-1.7-.4v.1c0 1.8 1.3 3.3 3.1 3.7-.3.1-.7.1-1 .1-.2 0-.5 0-.7-.1.5 1.6 2 2.8 3.8 2.8A7.3 7.3 0 0 1 2 18.3 10.3 10.3 0 0 0 7.6 20c6.7 0 10.4-5.7 10.4-10.7v-.5c.7-.5 1.3-1.2 1.8-2z"
+                      stroke="rgba(255,255,255,.80)" stroke-width="1.6" stroke-linejoin="round"/>
+              </svg>
+            </a>
+
+            <a class="social-btn" href="#" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z" stroke="rgba(255,255,255,.80)" stroke-width="1.6"/>
+                <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" stroke="rgba(255,255,255,.80)" stroke-width="1.6"/>
+                <path d="M17.5 6.5h.01" stroke="rgba(255,255,255,.80)" stroke-width="2.4" stroke-linecap="round"/>
+              </svg>
+            </a>
+
+            <a class="social-btn" href="#" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M6.5 9.5V20" stroke="rgba(255,255,255,.80)" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M6.5 6.2v.1" stroke="rgba(255,255,255,.80)" stroke-width="3" stroke-linecap="round"/>
+                <path d="M10.5 20v-6.2c0-1.7 1.1-3 2.8-3 1.6 0 2.6 1.1 2.6 3V20" stroke="rgba(255,255,255,.80)" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M10.5 9.5V20" stroke="rgba(255,255,255,.80)" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </a>
+
+            <a class="social-btn" href="#" aria-label="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M21 12s0-3.4-.4-5c-.2-.7-.7-1.2-1.4-1.4C17.6 5 12 5 12 5s-5.6 0-7.2.6c-.7.2-1.2.7-1.4 1.4C3 8.6 3 12 3 12s0 3.4.4 5c.2.7.7 1.2 1.4 1.4C6.4 19 12 19 12 19s5.6 0 7.2-.6c.7-.2 1.2-.7 1.4-1.4.4-1.6.4-5 .4-5z"
+                      stroke="rgba(255,255,255,.80)" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M10.5 9.8v4.4l3.8-2.2-3.8-2.2z" fill="rgba(255,255,255,.80)"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Columns -->
+        <div>
+          <div class="text-white font-extrabold">Product</div>
+          <div class="mt-4 space-y-2">
+            <a class="footer-link" href="#creators">For Creators</a><br>
+            <a class="footer-link" href="#agencies">For Agencies</a><br>
+            <a class="footer-link" href="#features">Features</a><br>
+            <a class="footer-link" href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/" target="_blank">Pricing</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-white font-extrabold">Company</div>
+          <div class="mt-4 space-y-2">
+            <a class="footer-link" href="#">About Us</a><br>
+            <a class="footer-link" href="#">Careers</a><br>
+            <a class="footer-link" href="#">Blog</a><br>
+            <a class="footer-link" href="#">Press</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-white font-extrabold">Resources</div>
+          <div class="mt-4 space-y-2">
+            <a class="footer-link" href="#faq">Help Center</a><br>
+            <a class="footer-link" href="#">Contract Templates</a><br>
+            <a class="footer-link" href="#">Creator Guide</a><br>
+            <a class="footer-link" href="#">Agency Guide</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-white font-extrabold">Legal</div>
+          <div class="mt-4 space-y-2">
+            <a class="footer-link" href="#">Privacy Policy</a><br>
+            <a class="footer-link" href="#">Terms of Service</a><br>
+            <a class="footer-link" href="#">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 footer-divider"></div>
+
+      <div class="mt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-sm footer-muted">
+        <div>© <span id="y"></span> CreatorMatch. All rights reserved.</div>
+        <div>Made with ♡ for the creator economy</div>
+      </div>
+    </div>
+  </footer>
+
   <script>
-    // Year
     document.getElementById("y").textContent = new Date().getFullYear();
 
-    // Scroll reveal
     const revealEls = document.querySelectorAll(".reveal");
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add("show");
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
       });
     }, { threshold: 0.12 });
 
-    revealEls.forEach(el => io.observe(el));
+    revealEls.forEach((el) => io.observe(el));
   </script>
 </body>
 </html>
