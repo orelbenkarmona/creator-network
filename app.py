@@ -424,10 +424,6 @@ def right_mark():
         logo_data = f"data:image/webp;base64,{logo_data}"
     logo_html = f'<img src="{logo_data}" alt="OnlyFans emblem" />' if logo_data else "OF"
 
-    
-    st.subheader("What you’ll add")
-    st.caption("These steps help agencies understand you better.")
-
 
 def goto(screen):
     st.session_state.screen = screen
