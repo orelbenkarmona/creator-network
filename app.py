@@ -428,19 +428,6 @@ def right_mark():
     st.subheader("What you’ll add")
     st.caption("These steps help agencies understand you better.")
 
-    c1, c2, c3 = st.columns(3)
-
-    with c1:
-        st.markdown("### 📸 Profile photos")
-        st.caption("Add 3–6 images")
-
-    with c2:
-        st.markdown("### 🧠 Personality type")
-        st.caption("Helps teams communicate")
-
-    with c3:
-        st.markdown("### ✅ Verification")
-        st.caption("Selfie upload (review)")
 
 def goto(screen):
     st.session_state.screen = screen
