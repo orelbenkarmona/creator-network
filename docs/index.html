@@ -193,35 +193,40 @@
     .hero{
       padding:0;
       place-items:stretch;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.28)),
+        url("assets/entry-wallpaper.jpg") center/cover no-repeat;
     }
     .hero-grid{
       height:100vh;
       display:grid;
-      grid-template-columns: 1.05fr .95fr;
+      grid-template-columns: 1fr;
     }
     .hero-copy{
       padding: 130px 18px 54px;
       display:flex;
       justify-content:center;
+      align-items:center;
+      text-align:center;
+      background: rgba(255,255,255,.55);
+      backdrop-filter: blur(10px);
+    }
+    .hero-media{
+      display:none;
     }
     .hero-copy .wrap{
       display:flex;
       flex-direction:column;
       justify-content:center;
       gap:18px;
+      align-items:center;
     }
     .hero-media{
       position:relative;
       overflow:hidden;
       min-height:100vh;
-      border-left:1px solid var(--line);
-      /* Replace this with a real, calm, human photo in /docs/assets/hero.jpg */
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.20)),
-        url("assets/hero.jpg") center/cover no-repeat,
-        radial-gradient(circle at 25% 20%, rgba(255,75,184,.18), rgba(255,75,184,0) 55%),
-        radial-gradient(circle at 70% 30%, rgba(107,92,255,.18), rgba(107,92,255,0) 55%),
-        #f6f7fb;
+      border-left:1px solid rgba(255,255,255,.18);
+      background: transparent;
     }
     .hero-overlay{
       position:absolute; inset:0;
