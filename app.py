@@ -127,6 +127,13 @@ def init_db():
         created TEXT NOT NULL
     )
     """)
+    c.execute("""
+    CREATE TABLE IF NOT EXISTS waitlist (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        email TEXT UNIQUE,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+    """)
     conn.commit()
     conn.close()
 
@@ -186,6 +193,16 @@ def read_matches(user):
     conn.close()
     return df
 
+def save_waitlist(email):
+    conn = db()
+    c = conn.cursor()
+    try:
+        c.execute("INSERT INTO waitlist (email) VALUES (?)", (email,))
+        conn.commit()
+        return True
+    except Exception:
+        return False
+
 init_db()
 
 # ----------------------------
@@ -201,6 +218,17 @@ with st.sidebar:
     st.session_state.user = st.text_input("Your name (for messaging)", value=st.session_state.user, placeholder="e.g., Orel")
     st.markdown("---")
     page = st.radio("Navigate", ["Dashboard", "Create Profile", "Marketplace", "Messages"], index=0)
+    st.markdown("---")
+    st.subheader("Join Waitlist")
+    email_input = st.text_input("Your email")
+    if st.button("Request Access"):
+        if email_input:
+            if save_waitlist(email_input):
+                st.success("You're on the waitlist.")
+            else:
+                st.warning("Email already registered.")
+        else:
+            st.error("Enter valid email.")
 
 # ----------------------------
 # HEADER
