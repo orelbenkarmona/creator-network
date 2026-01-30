@@ -424,23 +424,7 @@ def right_mark():
         logo_data = f"data:image/webp;base64,{logo_data}"
     logo_html = f'<img src="{logo_data}" alt="OnlyFans emblem" />' if logo_data else "OF"
 
-    st.markdown(f"""
-    <div class="cn-mark-wrap">
-      <div class="cn-mark-bg"></div>
-      <div class="cn-mark-bg2"></div>
-
-      <div style="position:relative; z-index:2;">
-        <div class="cn-of">{logo_html}</div>
-        <div style="margin-top: 14px; font-weight:900; font-size:18px; color:#0f172a;">
-          Creator onboarding
-        </div>
-        <div class="cn-subtitle" style="margin-top:6px;">
-          Clean. Fast. Private. Built for trust.
-        </div>
-      </div>
-    </div>
-    """, unsafe_allow_html=True)
-
+    
     st.subheader("What you’ll add")
     st.caption("These steps help agencies understand you better.")
 
