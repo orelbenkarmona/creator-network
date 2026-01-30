@@ -3,7 +3,8 @@ import pandas as pd
 import plotly.express as px
 from datetime import datetime
 import sqlite3
-
+import os
+from pathlib import Path
 # ----------------------------
 # CONFIG
 # ----------------------------
@@ -15,7 +16,8 @@ st.set_page_config(
 )
 
 APP_NAME = "Creator Network"
-DB_PATH = "data/app.db"
+DB_PATH = Path("data") / "app.db"
+DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
 
 # ----------------------------
@@ -87,7 +89,7 @@ header {visibility: hidden;}
 # DATABASE
 # ----------------------------
 def db():
-    conn = sqlite3.connect(DB_PATH, check_same_thread=False)
+    conn = sqlite3.connect(str(DB_PATH), check_same_thread=False)
     conn.execute("PRAGMA journal_mode=WAL;")
     return conn
 
