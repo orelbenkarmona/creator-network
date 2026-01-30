@@ -2,133 +2,273 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Creator Network — Verified Creator × Manager Marketplace</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Creator Network — Verified creator marketplace</title>
+  <meta name="description" content="A verified marketplace to connect creators with managers & agencies — with transparent terms and safer partnerships." />
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* softer background + glass look */
+    .bg-grid {
+      background-image:
+        radial-gradient(ellipse at top, rgba(99,102,241,.18), transparent 55%),
+        radial-gradient(ellipse at bottom, rgba(20,184,166,.14), transparent 55%),
+        radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: auto, auto, 36px 36px;
+      background-position: center, center, 0 0;
+    }
+    .glass {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      backdrop-filter: blur(14px);
+    }
+    .pill {
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, rgba(244,63,94,1), rgba(99,102,241,1));
+    }
+  </style>
 </head>
-<body class="bg-slate-950 text-white">
-  <div class="min-h-screen">
-    <header class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-      <div class="font-semibold tracking-tight text-lg">🔥 Creator Network</div>
-      <div class="flex gap-3">
-        <a href="#how" class="text-slate-300 hover:text-white">How it works</a>
-        <a href="#trust" class="text-slate-300 hover:text-white">Trust</a>
-        <a href="#pricing" class="text-slate-300 hover:text-white">Pricing</a>
+
+<body class="bg-slate-950 text-white bg-grid">
+  <!-- Top bar -->
+  <header class="max-w-6xl mx-auto px-6 pt-8 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl glass flex items-center justify-center">🔥</div>
+      <div class="font-semibold tracking-tight">Creator Network</div>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-6 text-sm text-slate-300">
+      <a href="#how" class="hover:text-white">How it works</a>
+      <a href="#trust" class="hover:text-white">Trust</a>
+      <a href="#pricing" class="hover:text-white">Pricing</a>
+      <a href="#faq" class="hover:text-white">FAQ</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="#waitlist" class="hidden sm:inline text-sm text-slate-300 hover:text-white">Join waitlist</a>
+      <a
+        href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/"
+        target="_blank"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-xl btn-primary text-sm font-semibold shadow-lg shadow-pink-500/20 hover:opacity-95"
+      >
+        Launch App <span class="opacity-80">→</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main class="max-w-6xl mx-auto px-6 pt-14 pb-14">
+    <section class="glass rounded-3xl p-7 md:p-10">
+      <div class="flex flex-col gap-6">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="pill text-xs text-slate-200 px-3 py-1 rounded-full">Trust-first</span>
+          <span class="pill text-xs text-slate-200 px-3 py-1 rounded-full">Transparent deals</span>
+          <span class="pill text-xs text-slate-200 px-3 py-1 rounded-full">Verified profiles</span>
+          <span class="pill text-xs text-slate-200 px-3 py-1 rounded-full">Spam-proof matching</span>
+        </div>
+
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
+          Verified marketplace to connect
+          <span class="text-pink-300">creators</span>
+          with
+          <span class="text-teal-200">managers & agencies</span>.
+        </h1>
+
+        <p class="text-slate-300 max-w-2xl text-base md:text-lg leading-relaxed">
+          No more random DMs. Compare transparent terms, verified profiles, and performance-based partnerships — in one place.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 sm:items-center">
+          <a
+            href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/"
+            target="_blank"
+            class="inline-flex justify-center items-center gap-2 px-5 py-3 rounded-2xl btn-primary font-semibold shadow-lg shadow-indigo-500/20 hover:opacity-95"
+          >
+            Launch App <span class="opacity-80">→</span>
+          </a>
+
+          <a
+            href="#waitlist"
+            class="inline-flex justify-center items-center gap-2 px-5 py-3 rounded-2xl pill font-semibold text-slate-100 hover:bg-white/10"
+          >
+            Join Waitlist
+          </a>
+
+          <div class="text-xs text-slate-400 sm:ml-2">
+            Demo build • Garage MVP • Early access
+          </div>
+        </div>
+
+        <!-- Social proof -->
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div class="pill rounded-2xl p-4">
+            <div class="text-xs text-slate-400">Problem</div>
+            <div class="mt-1 font-semibold">Low trust & zero transparency</div>
+            <div class="mt-1 text-sm text-slate-300">Creators get spam. Agencies waste time. Deals are opaque.</div>
+          </div>
+          <div class="pill rounded-2xl p-4">
+            <div class="text-xs text-slate-400">Solution</div>
+            <div class="mt-1 font-semibold">Verified matching + clear terms</div>
+            <div class="mt-1 text-sm text-slate-300">Profiles, verification, transparent offers, reputation.</div>
+          </div>
+          <div class="pill rounded-2xl p-4">
+            <div class="text-xs text-slate-400">Outcome</div>
+            <div class="mt-1 font-semibold">Faster, safer partnerships</div>
+            <div class="mt-1 text-sm text-slate-300">Build long-term relationships without guessing.</div>
+          </div>
+        </div>
       </div>
-    </header>
+    </section>
 
-    <main class="max-w-6xl mx-auto px-6">
-      <section class="pt-10 pb-16">
-        <div class="rounded-3xl border border-white/10 bg-white/5 p-10">
-          <p class="text-sm text-slate-300">Trust-first creator economy infrastructure</p>
-          <h1 class="mt-3 text-4xl md:text-6xl font-bold leading-tight">
-            Verified marketplace to connect <span class="text-rose-300">creators</span> with
-            <span class="text-teal-200">managers & agencies</span>.
-          </h1>
-          <p class="mt-4 text-slate-300 max-w-2xl">
-            No more random DMs. Compare transparent terms, verified profiles, and performance-based partnerships — in one place.
-          </p>
+    <!-- How it works -->
+    <section id="how" class="mt-12">
+      <div class="flex items-end justify-between gap-4">
+        <h2 class="text-2xl md:text-3xl font-bold tracking-tight">How it works</h2>
+        <div class="text-sm text-slate-400">Simple flow. No BS.</div>
+      </div>
 
-          <div class="mt-8 flex flex-col sm:flex-row gap-3">
-          
-            <a href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/" class="py-5 px-3 rounded-xl bg-rose-500 hover:bg-rose-400 font-semibold">
-    Launch App
-</a>
-
-            <a href="#waitlist" class="px-5 py-3 rounded-xl border border-white/15 hover:bg-white/5 font-semibold text-center">
-              Join Waitlist
-            </a>
-          </div>
-
-          <div class="mt-10 grid md:grid-cols-3 gap-4">
-            <div class="rounded-2xl border border-white/10 bg-black/20 p-5">
-              <div class="text-sm text-slate-300">Problem</div>
-              <div class="mt-1 font-semibold">Low trust & zero transparency</div>
-              <p class="mt-2 text-slate-300 text-sm">Creators get spam. Agencies waste time. Deals are opaque.</p>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-black/20 p-5">
-              <div class="text-sm text-slate-300">Solution</div>
-              <div class="mt-1 font-semibold">Verified matching + clear terms</div>
-              <p class="mt-2 text-slate-300 text-sm">Profiles, verification, transparent offers, reputation.</p>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-black/20 p-5">
-              <div class="text-sm text-slate-300">Outcome</div>
-              <div class="mt-1 font-semibold">Faster, safer partnerships</div>
-              <p class="mt-2 text-slate-300 text-sm">Build long-term relationships without guessing.</p>
-            </div>
-          </div>
+      <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="glass rounded-2xl p-5">
+          <div class="text-sm text-slate-300">1) Create a profile</div>
+          <div class="mt-2 text-slate-400 text-sm">Creator or agency. Add niche, location, proof (optional).</div>
         </div>
-      </section>
-
-      <section id="how" class="pb-16">
-        <h2 class="text-2xl font-bold">How it works</h2>
-        <div class="mt-6 grid md:grid-cols-3 gap-4">
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <div class="font-semibold">1) Create a profile</div>
-            <p class="mt-2 text-slate-300 text-sm">Creator or agency. Add niche, location, proof (optional).</p>
-          </div>
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <div class="font-semibold">2) Get verified</div>
-            <p class="mt-2 text-slate-300 text-sm">Manual verification first. Earn a verified badge.</p>
-          </div>
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <div class="font-semibold">3) Match + message</div>
-            <p class="mt-2 text-slate-300 text-sm">Compare terms, connect, and start partnerships.</p>
-          </div>
+        <div class="glass rounded-2xl p-5">
+          <div class="text-sm text-slate-300">2) Get verified</div>
+          <div class="mt-2 text-slate-400 text-sm">Manual verification first. Earn a verified badge.</div>
         </div>
-      </section>
+        <div class="glass rounded-2xl p-5">
+          <div class="text-sm text-slate-300">3) Match + message</div>
+          <div class="mt-2 text-slate-400 text-sm">Compare terms, connect, and start partnerships.</div>
+        </div>
+      </div>
+    </section>
 
-      <section id="trust" class="pb-16">
-        <h2 class="text-2xl font-bold">Trust layer (our focus)</h2>
-        <div class="mt-6 rounded-3xl border border-white/10 bg-white/5 p-8">
-          <ul class="grid md:grid-cols-2 gap-4 text-slate-300 text-sm">
-            <li>✅ Verified badges (manual review → automated later)</li>
-            <li>✅ Transparent deal terms (commission, services, length)</li>
-            <li>✅ Reputation + reporting + moderation</li>
-            <li>✅ Clear boundaries: we are not an agency</li>
+    <!-- Trust -->
+    <section id="trust" class="mt-12">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Trust layers</h2>
+      <p class="mt-2 text-slate-400 max-w-3xl text-sm md:text-base">
+        The whole point: remove scams, fake flex, and wasted time. Verification + structured offers + reputation.
+      </p>
+
+      <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="glass rounded-2xl p-6">
+          <div class="font-semibold">Verified identity</div>
+          <ul class="mt-3 space-y-2 text-sm text-slate-300 list-disc pl-5">
+            <li>Badge for verified creators / agencies</li>
+            <li>Manual review first (tight control)</li>
+            <li>Reduces impersonation + fake profiles</li>
           </ul>
         </div>
-      </section>
-
-      <section id="pricing" class="pb-16">
-        <h2 class="text-2xl font-bold">Pricing (example)</h2>
-        <div class="mt-6 grid md:grid-cols-3 gap-4">
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <div class="font-semibold">Free</div>
-            <p class="mt-2 text-slate-300 text-sm">Create a profile + browse marketplace</p>
-          </div>
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <div class="font-semibold">Pro (Agency)</div>
-            <p class="mt-2 text-slate-300 text-sm">Advanced filters + priority listing + team accounts</p>
-          </div>
-          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <div class="font-semibold">Verified+</div>
-            <p class="mt-2 text-slate-300 text-sm">Verification + premium trust signals + featured badge</p>
-          </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="font-semibold">Transparent deal terms</div>
+          <ul class="mt-3 space-y-2 text-sm text-slate-300 list-disc pl-5">
+            <li>Show commission, scope, deliverables</li>
+            <li>Clear expectations upfront</li>
+            <li>Reputation builds long-term trust</li>
+          </ul>
         </div>
-      </section>
-
-      <section id="waitlist" class="pb-24">
-        <div class="rounded-3xl border border-white/10 bg-white/5 p-8">
-          <h2 class="text-2xl font-bold">Join the waitlist</h2>
-          <p class="mt-2 text-slate-300 text-sm">We’re building with early users. Leave your email.</p>
-
-          <!-- simplest no-backend form: mailto -->
-          <form class="mt-6 flex flex-col sm:flex-row gap-3" action="mailto:youremail@example.com" method="post" enctype="text/plain">
-            <input class="flex-1 px-4 py-3 rounded-xl bg-black/30 border border-white/10" name="email" placeholder="email@domain.com" />
-            <button class="px-5 py-3 rounded-xl bg-teal-500 hover:bg-teal-400 font-semibold">Request Access</button>
-          </form>
-
-          <p class="mt-3 text-slate-400 text-xs">Replace the mailto email with yours, or swap to Google Form later.</p>
-        </div>
-      </section>
-    </main>
-
-    <footer class="border-t border-white/10 py-10">
-      <div class="max-w-6xl mx-auto px-6 text-slate-400 text-sm">
-        © Creator Network — Built by 3 students. Trust-first infrastructure.
       </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="mt-12">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Pricing</h2>
+      <p class="mt-2 text-slate-400 text-sm md:text-base">Start free. Upgrade when there’s real value.</p>
+
+      <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="glass rounded-2xl p-6">
+          <div class="text-sm text-slate-400">Free</div>
+          <div class="mt-1 text-3xl font-bold">$0</div>
+          <div class="mt-3 text-sm text-slate-300">For early testing and MVP.</div>
+          <ul class="mt-4 space-y-2 text-sm text-slate-300 list-disc pl-5">
+            <li>Create profile</li>
+            <li>Browse marketplace</li>
+            <li>Basic messaging</li>
+          </ul>
+        </div>
+
+        <div class="glass rounded-2xl p-6 border border-white/20">
+          <div class="text-sm text-slate-200">Pro</div>
+          <div class="mt-1 text-3xl font-bold">$29</div>
+          <div class="mt-3 text-sm text-slate-300">For serious creators and agencies.</div>
+          <ul class="mt-4 space-y-2 text-sm text-slate-300 list-disc pl-5">
+            <li>Verified badge priority</li>
+            <li>Featured listing</li>
+            <li>Advanced filters</li>
+          </ul>
+        </div>
+
+        <div class="glass rounded-2xl p-6">
+          <div class="text-sm text-slate-400">Enterprise</div>
+          <div class="mt-1 text-3xl font-bold">Custom</div>
+          <div class="mt-3 text-sm text-slate-300">For bigger teams & workflows.</div>
+          <ul class="mt-4 space-y-2 text-sm text-slate-300 list-disc pl-5">
+            <li>Team accounts</li>
+            <li>Compliance / audit</li>
+            <li>Custom onboarding</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Waitlist -->
+    <section id="waitlist" class="mt-12">
+      <div class="glass rounded-2xl p-6 md:p-8">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div>
+            <h2 class="text-2xl font-bold tracking-tight">Join the waitlist</h2>
+            <p class="mt-2 text-slate-300 text-sm">Drop your email. We’ll invite you when verification opens.</p>
+          </div>
+
+          <!-- Simple placeholder form (no backend yet) -->
+          <form class="flex flex-col sm:flex-row gap-3 w-full md:w-auto" onsubmit="event.preventDefault(); alert('Saved (demo). Next step: connect to backend.');">
+            <input
+              type="email"
+              required
+              placeholder="you@example.com"
+              class="w-full sm:w-72 px-4 py-3 rounded-xl bg-white/10 border border-white/10 outline-none focus:border-white/25"
+            />
+            <button class="px-5 py-3 rounded-xl btn-primary font-semibold hover:opacity-95">
+              Request access
+            </button>
+          </form>
+        </div>
+        <div class="mt-3 text-xs text-slate-500">
+          This is a demo waitlist (next step: connect to a real database/email tool).
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="mt-12">
+      <h2 class="text-2xl md:text-3xl font-bold tracking-tight">FAQ</h2>
+      <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="glass rounded-2xl p-6">
+          <div class="font-semibold">Why two links?</div>
+          <div class="mt-2 text-sm text-slate-300">
+            GitHub Pages hosts the marketing landing. Streamlit hosts the interactive app. Landing → button → app.
+          </div>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <div class="font-semibold">Is verification live?</div>
+          <div class="mt-2 text-sm text-slate-300">
+            Right now it’s a controlled MVP. Manual verification first so quality stays high.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-14 pb-10 text-center text-xs text-slate-500">
+      <div>© <span id="y"></span> Creator Network. Demo build.</div>
     </footer>
-  </div>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
