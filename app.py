@@ -1,3 +1,4 @@
+import base64
 import re
 import sqlite3
 from datetime import datetime
@@ -156,11 +157,14 @@ header {visibility: hidden;}
   width: 82px; height: 82px;
   border-radius: 26px;
   display:flex; align-items:center; justify-content:center;
-  font-weight: 900;
-  font-size: 32px;
-  color: white;
-  background: linear-gradient(90deg, #ff3d87 0%, #7c3aed 100%);
-  box-shadow: 0 26px 50px rgba(124,58,237,.18);
+  background: #0b0b0b;
+  box-shadow: 0 26px 50px rgba(15,23,42,.18);
+}
+.cn-of img{
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+  display: block;
 }
 .cn-mini{
   display:flex; gap:10px; margin-top: 16px; flex-wrap:wrap;
@@ -413,13 +417,20 @@ def stepper(current_idx, labels):
     """, unsafe_allow_html=True)
 
 def right_mark():
-    st.markdown("""
+    logo_path = Path("OF emblem.webp")
+    logo_data = None
+    if logo_path.exists():
+        logo_data = base64.b64encode(logo_path.read_bytes()).decode("ascii")
+        logo_data = f"data:image/webp;base64,{logo_data}"
+    logo_html = f'<img src="{logo_data}" alt="OnlyFans emblem" />' if logo_data else "OF"
+
+    st.markdown(f"""
     <div class="cn-mark-wrap">
       <div class="cn-mark-bg"></div>
       <div class="cn-mark-bg2"></div>
 
       <div style="position:relative; z-index:2;">
-        <div class="cn-of">OF</div>
+        <div class="cn-of">{logo_html}</div>
         <div style="margin-top: 14px; font-weight:900; font-size:18px; color:#0f172a;">
           Creator onboarding
         </div>
