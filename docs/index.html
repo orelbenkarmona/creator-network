@@ -337,38 +337,41 @@
     }
     .mission .wrap{
       display:grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
-      gap:40px;
-      max-width: 1060px;
-      align-items:start;
+      grid-template-columns: 1fr;
+      gap:18px;
+      max-width: 980px;
+    }
+    .mission .kicker{
+      font-size:13px;
+      letter-spacing:.32em;
+      color:rgba(10,16,28,.7);
     }
     .mission h2{
-      font-size: clamp(40px, 5.4vw, 78px);
+      font-size: clamp(44px, 6vw, 84px);
       line-height:1.02;
       letter-spacing:-0.03em;
     }
     .mission p.lead{
-      max-width: 40ch;
-      color:rgba(10,16,28,.66);
-      font-size: clamp(16px, 1.55vw, 20px);
+      max-width: 64ch;
+      color:rgba(10,16,28,.64);
+      font-size: clamp(16px, 1.6vw, 20px);
     }
-    .mission-right{
+    .mission-accent{
       display:flex;
-      flex-direction:column;
-      gap:18px;
-      padding-top: 12px;
+      align-items:center;
+      gap:14px;
+      margin-top: 8px;
     }
     .mission-rule{
       height:1px;
-      background: rgba(10,16,28,.10);
-      max-width: 420px;
+      background: rgba(10,16,28,.12);
+      flex:1;
+      max-width: 520px;
     }
-    @media (max-width: 980px){
-      .mission .wrap{
-        grid-template-columns: 1fr;
-        gap:22px;
-      }
-      .mission-right{padding-top:0}
+    .mission-arrow{
+      width:90px;
+      height:40px;
+      opacity:.35;
     }
 
     /* 3) IMPACT: bold statement (high contrast) */
