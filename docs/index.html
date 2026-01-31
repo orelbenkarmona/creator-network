@@ -337,15 +337,38 @@
     }
     .mission .wrap{
       display:grid;
-      grid-template-columns: 1fr;
-      gap:18px;
-      max-width: 980px;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+      gap:40px;
+      max-width: 1060px;
+      align-items:start;
     }
-    .mission p.lead{max-width: 64ch}
-    .rule{
-      height:1px; background: rgba(10,16,28,.10);
-      margin-top: 18px;
-      max-width: 560px;
+    .mission h2{
+      font-size: clamp(40px, 5.4vw, 78px);
+      line-height:1.02;
+      letter-spacing:-0.03em;
+    }
+    .mission p.lead{
+      max-width: 40ch;
+      color:rgba(10,16,28,.66);
+      font-size: clamp(16px, 1.55vw, 20px);
+    }
+    .mission-right{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      padding-top: 12px;
+    }
+    .mission-rule{
+      height:1px;
+      background: rgba(10,16,28,.10);
+      max-width: 420px;
+    }
+    @media (max-width: 980px){
+      .mission .wrap{
+        grid-template-columns: 1fr;
+        gap:22px;
+      }
+      .mission-right{padding-top:0}
     }
 
     /* 3) IMPACT: bold statement (high contrast) */
