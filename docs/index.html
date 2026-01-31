@@ -358,30 +358,6 @@
       color:rgba(10,16,28,.64);
       font-size: clamp(16px, 1.5vw, 20px);
     }
-    .circled{
-      position:relative;
-      display:inline-block;
-      padding:0 .18em;
-    }
-    .circled::after{
-      content:"";
-      position:absolute;
-      inset:-0.28em -0.2em -0.18em;
-      border:3px solid #7a1b6d;
-      border-radius:999px;
-      transform:rotate(-6deg);
-      opacity:.8;
-      pointer-events:none;
-    }
-    .mission-arrow{
-      position:absolute;
-      left: 36%;
-      top: 46%;
-      width:150px;
-      height:90px;
-      opacity:.7;
-      pointer-events:none;
-    }
     .mission-left{
       position:absolute;
       top:0;
@@ -885,17 +861,13 @@
       <div class="wrap reveal">
         <div class="mission-left">
           <p class="kicker">Our Approach</p>
-          <h2>Make partnerships <span class="serif circled">professional</span>.</h2>
+          <h2>Make partnerships <span class="serif">professional</span>.</h2>
         </div>
         <div class="mission-right">
           <p class="lead">
             This exists to replace random outreach with a calm process: verified identity, structured profiles, and boundaries that protect both sides.
           </p>
         </div>
-        <svg class="mission-arrow" viewBox="0 0 140 80" fill="none" aria-hidden="true">
-          <path d="M6 16c34 4 52 16 68 34 12 14 28 20 60 18" stroke="#7a1b6d" stroke-width="3" stroke-linecap="round"/>
-          <path d="M120 60l14 2-9 12" stroke="#7a1b6d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
       </div>
     </section>
 
