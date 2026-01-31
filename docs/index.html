@@ -55,11 +55,12 @@
       pointer-events:auto;
     }
     .brand{
-      display:flex; align-items:center; gap:10px;
+      display:flex; align-items:center; justify-content:center;
       font-weight:820; letter-spacing:.2px;
       white-space:nowrap;
       position:relative;
-      padding:6px 10px;
+      padding:16px 12px 8px;
+      min-height:120px;
     }
     .brand-link{
       text-decoration:none;
@@ -73,18 +74,20 @@
       position:relative;
       z-index:2;
       color:rgba(10,16,28,.92);
+      text-align:center;
+      padding:0 14px;
     }
     .mark{
-      width:120px;height:120px;
+      width:140px;height:140px;
       overflow:visible;
       border:none;
       box-shadow:none;
       flex:0 0 auto;
       background:transparent;
       position:absolute;
-      left:-24px;
-      top:50%;
-      transform:translateY(-50%);
+      left:50%;
+      top:55%;
+      transform:translate(-50%, -50%);
       opacity:.18;
       z-index:1;
       pointer-events:none;
