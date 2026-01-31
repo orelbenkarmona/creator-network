@@ -118,8 +118,33 @@
     .btn.primary{
       border-color:transparent;
       background: linear-gradient(135deg, var(--accent2), var(--accent));
+      background-size: 220% 220%;
       color:#fff;
       box-shadow: 0 16px 34px rgba(107,92,255,.20);
+      position:relative;
+      overflow:hidden;
+      animation: creatorShift 6s ease infinite;
+    }
+    .btn.primary::after{
+      content:"";
+      position:absolute;
+      inset:-40% -20%;
+      background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,.45) 50%, transparent 60%);
+      transform: translateX(-60%) rotate(10deg);
+      transition: transform .6s ease;
+      pointer-events:none;
+    }
+    .btn.primary:hover{
+      transform:translateY(-1px) scale(1.01);
+      box-shadow: 0 20px 40px rgba(107,92,255,.24);
+    }
+    .btn.primary:hover::after{
+      transform: translateX(60%) rotate(10deg);
+    }
+    @keyframes creatorShift{
+      0%{background-position: 0% 50%}
+      50%{background-position: 100% 50%}
+      100%{background-position: 0% 50%}
     }
     .btn.agency{
       border-color:transparent;
