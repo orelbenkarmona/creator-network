@@ -724,21 +724,23 @@
 <body>
   <header aria-label="Top navigation">
     <div class="topbar">
-      <div class="brand">
+      <nav class="nav-left" aria-label="Primary left">
+        <a href="#mission">Mission</a>
+        <a href="#impact">Impact</a>
+      </nav>
+
+      <a class="brand brand-link" href="#home" aria-label="Back to top">
         <div class="mark">
           <img src="assets/emblem.jpeg" alt="Secret Network emblem">
         </div>
         <div>Secret Network</div>
-      </div>
+      </a>
 
-      <nav aria-label="Primary">
-        <a href="#mission">Mission</a>
-        <a href="#impact">Impact</a>
-        <a href="#who">Who it’s for</a>
-        <a href="#how">How it works</a>
-      </nav>
-
-      <div class="cta">
+      <div class="cta nav-right">
+        <nav aria-label="Primary right">
+          <a href="#who">Who it’s for</a>
+          <a href="#how">How it works</a>
+        </nav>
         <a class="btn primary" href="https://creator-network-6txmkwhg8n8svvqnfmjipa.streamlit.app/" target="_blank" rel="noopener">
           Launch App →
         </a>
