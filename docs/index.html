@@ -342,10 +342,21 @@
       max-width: 980px;
     }
     .mission p.lead{max-width: 64ch}
-    .rule{
-      height:1px; background: rgba(10,16,28,.10);
-      margin-top: 18px;
-      max-width: 560px;
+    .section-kicker{
+      font-size:14px;
+      letter-spacing:.32em;
+      text-transform:uppercase;
+      background: linear-gradient(90deg, #b91c1c, #f59e0b, #2563eb, #b91c1c);
+      background-size: 240% 100%;
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      animation: kickerShift 6s ease-in-out infinite;
+    }
+    @keyframes kickerShift{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
     }
 
     /* 3) IMPACT: bold statement (high contrast) */
