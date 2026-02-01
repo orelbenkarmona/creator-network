@@ -35,6 +35,9 @@
       background:var(--bg);
       overflow:hidden; /* scroll lives in main */
     }
+    :root{
+      --page-scale: 1;
+    }
 
     /* ===== Top bar (minimal) ===== */
     header{
@@ -45,6 +48,9 @@
       justify-content:center;
       padding:14px 16px;
       pointer-events:none;
+      transform: scale(var(--page-scale));
+      transform-origin: top center;
+      width: calc(100% / var(--page-scale));
     }
     .topbar{
       width:min(1120px, calc(100% - 24px));
@@ -207,13 +213,16 @@
 
     /* ===== Scroll container + snap ===== */
     main{
-      height:100vh;
+      height: calc(100vh / var(--page-scale));
       overflow-y:auto;
       scroll-snap-type:y mandatory;
       scroll-behavior:smooth;
+      transform: scale(var(--page-scale));
+      transform-origin: top center;
+      width: calc(100% / var(--page-scale));
     }
     section{
-      min-height:100vh;
+      min-height: calc(100vh / var(--page-scale));
       scroll-snap-align:start;
       display:grid;
       place-items:center;
@@ -450,15 +459,6 @@
       .mission-quad1,
       .mission-quad3{
         margin-top: 16px;
-      }
-    }
-    @media (max-width: 640px){
-      main{
-        transform: scale(.8);
-        transform-origin: top center;
-      }
-      main section{
-        min-height: calc(100vh / .8);
       }
     }
     .section-kicker{
