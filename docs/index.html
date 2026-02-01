@@ -344,6 +344,11 @@
       position:relative;
       max-width: 1100px;
       min-height: 620px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr 1fr;
+      gap: 24px 48px;
+      align-items:start;
     }
     .mission .kicker{
       font-size:15px;
@@ -373,10 +378,8 @@
       background: rgba(0,0,0,.18);
     }
     .mission-kicker{
-      position:absolute;
-      top:-28px;
-      left:50%;
-      transform:translateX(-50%);
+      grid-column: 1 / -1;
+      justify-self:center;
       text-align:center;
       font-size:14px;
       letter-spacing:.32em;
@@ -388,6 +391,7 @@
       color:transparent;
       animation: missionKickerShift 7s ease-in-out infinite;
       font-weight:700;
+      margin-top: -6px;
     }
     @keyframes missionKickerShift{
       0%{background-position:0% 50%}
@@ -395,36 +399,34 @@
       100%{background-position:0% 50%}
     }
     .mission-left{
-      position:absolute;
-      top:10px;
-      left:0;
-      max-width: 14ch;
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      max-width: 16ch;
       z-index:2;
     }
     .mission-right{
-      position:absolute;
-      right:-60px;
-      bottom:50px;
+      grid-column: 2 / 3;
+      grid-row: 3 / 4;
       max-width: 48ch;
-      text-align:center;
+      justify-self:end;
+      text-align:left;
     }
     .mission-quad1{
-      position:absolute;
-      top:28px;
-      right:70px;
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
       width: 220px;
+      justify-self:end;
       text-align:center;
       z-index:1;
     }
     .mission-quad3{
-      position:absolute;
-      left:0;
-      bottom:0;
+      grid-column: 1 / 2;
+      grid-row: 3 / 4;
       width: 220px;
     }
     .mission-img{
-      width: 220px;
-      height: 220px;
+      width: clamp(150px, 20vw, 220px);
+      height: clamp(150px, 20vw, 220px);
       object-fit: cover;
       border-radius: 18px;
       display:block;
@@ -439,18 +441,10 @@
     @media (max-width: 980px){
       .mission .wrap{
         min-height:auto;
+        gap: 18px 28px;
       }
-      .mission-left,
-      .mission-right,
-      .mission-quad1,
-      .mission-quad3{
-        position:static;
-        max-width:none;
-      }
-      .mission-quad1,
-      .mission-quad3{
-        margin-top: 16px;
-      }
+      .mission-left{max-width: 18ch}
+      .mission-right{max-width: 40ch}
     }
     .section-kicker{
       font-size:14px;
