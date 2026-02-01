@@ -1222,6 +1222,15 @@
       const target = document.getElementById(location.hash.slice(1));
       if (target) target.scrollIntoView();
     }
+
+    // Keep layout visually consistent across devices by scaling to a design width
+    const setPageScale = () => {
+      const baseWidth = 1200;
+      const scale = Math.min(1, window.innerWidth / baseWidth);
+      document.documentElement.style.setProperty("--page-scale", scale.toFixed(3));
+    };
+    setPageScale();
+    window.addEventListener("resize", setPageScale);
   </script>
 </body>
 </html>
