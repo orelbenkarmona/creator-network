@@ -367,10 +367,8 @@
     .mission-left{
       position:absolute;
       top:10px;
-      left:50%;
-      transform:translateX(-50%);
-      max-width: 22ch;
-      text-align:center;
+      left:0;
+      max-width: 14ch;
       z-index:2;
     }
     .mission-right{
@@ -378,45 +376,14 @@
       right:-33px;
       bottom:60px;
       max-width: 48ch;
-      text-align:center;
     }
     .mission-quad1{
       position:absolute;
-      top:55px;
+      top:80px;
       right:120px;
       width: 220px;
       text-align:center;
       z-index:1;
-    }
-    .mission-lead{
-      display:inline-block;
-      padding:12px 16px;
-      border-radius:16px;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      background: rgba(0,0,0,.18);
-    }
-    .mission-kicker{
-      position:absolute;
-      top:-28px;
-      left:50%;
-      transform:translateX(-50%);
-      text-align:center;
-      font-size:14px;
-      letter-spacing:.32em;
-      text-transform:uppercase;
-      background: linear-gradient(90deg, #ef4444, #ec4899, #f59e0b, #f8fafc, #ef4444);
-      background-size: 240% 100%;
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-      animation: missionKickerShift 7s ease-in-out infinite;
-      font-weight:700;
-    }
-    @keyframes missionKickerShift{
-      0%{background-position:0% 50%}
-      50%{background-position:100% 50%}
-      100%{background-position:0% 50%}
     }
     .mission-quad3{
       position:absolute;
@@ -943,11 +910,11 @@
     <section class="mission" id="mission" aria-label="Mission">
       <div class="wrap reveal">
         <div class="mission-left">
-          <p class="mission-kicker">MISSION</p>
+          <p class="kicker">MISSION</p>
           <h2>Make partnerships <span class="serif">professional</span>.</h2>
         </div>
         <div class="mission-right">
-          <p class="lead mission-lead">
+          <p class="lead">
             This exists to replace random outreach with a calm process: verified identity, structured profiles, and boundaries that protect both sides.
           </p>
         </div>
