@@ -1145,6 +1145,7 @@
 
     const items = document.querySelectorAll(".reveal");
     const root = document.querySelector("main");
+    const sections = document.querySelectorAll("main section");
 
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -1153,6 +1154,17 @@
     }, { root, threshold: 0.18 });
 
     items.forEach(el => obs.observe(el));
+
+    // Track active section for header contrast on dark backgrounds
+    const sectionObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          document.body.dataset.section = e.target.id || "";
+        }
+      });
+    }, { root, threshold: 0.55 });
+
+    sections.forEach(sec => sectionObs.observe(sec));
 
     // Ensure hash links scroll inside the main container
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
